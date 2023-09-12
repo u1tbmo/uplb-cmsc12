@@ -15,4 +15,4 @@ radius = int(radius)
 # Print the result
 
 circle_area = pi * (radius ** 2)
-print(circle_area)
+print(f"The area of the circle with radius {radius} is {circle_area}.")
