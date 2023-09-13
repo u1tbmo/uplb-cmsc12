@@ -48,7 +48,7 @@ print(f"The total amount of money you would have spent on milk tea per year is {
 print("") # line spacing
 
 # GOAL 4: Show the user the saving vs. spending impact of
-# their habit using 1, 5, 10, 20, and 40 year timeframes.
+# their habit using 1, 5, 10, 20, and 40 year time frames.
 print(f"If you saved this money every year in a high-yield bank account\n"
       f"earning {INTEREST_RATE*100}% APY, you would have earned an extra:")
 print(f" > Php {future_value1} in 1 year (vs spending Php {periodic_deposit1})")
