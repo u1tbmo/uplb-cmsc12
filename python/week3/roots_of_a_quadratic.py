@@ -8,6 +8,11 @@ a = input("Enter the value of a: ")
 b = input("Enter the value of b: ")
 c = input("Enter the value of c: ")
 
+# Convert the values to float
+a = float(a)
+b = float(b)
+c = float(c)
+
 # Compute the discriminant
 # if discriminant is negative, there are no real roots
 # if discriminant is zero, there is one real root
