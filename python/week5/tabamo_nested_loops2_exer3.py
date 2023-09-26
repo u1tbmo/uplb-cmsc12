@@ -7,9 +7,9 @@ dimension = int(input("Enter dimension: "))
 # Boxed X
 # Iterate through each row and column in the 2D Dimension
 rows = 0
-while rows < dimension: # for every row
+while rows < dimension: # for every row in the 2d dimension
     cols = 0
-    while cols < dimension: # for every column
+    while cols < dimension: # for every column in the 2d dimension per row
         # print "*" if:
         # it is the first or last row,
         # or first or last column,
@@ -27,10 +27,13 @@ while rows < dimension: # for every row
 print()
 
 # X
-rows = 0
-while rows < dimension:
-    cols = 0
-    while cols < dimension:
+rows = 0 # Initialize rows
+while rows < dimension: # for every row in the 2d dimension
+    cols = 0 # Initialize cols
+    while cols < dimension: # for every column in the 2d dimension per row
+        # print "*" if:
+        # it is the downward diagonal (rows == cols),
+        # or the upward diagonal (cols + rows == dimension - 1)
         if (rows == cols) or (cols + rows == dimension - 1):
             print("*", end=" ")
         else:

@@ -7,7 +7,7 @@ dimension = int(input("Enter dimension: "))
 rows = 0 # Initialize rows
 while rows < dimension: # for every row in the 2D dimension
     cols = 0 # Initialize cols
-    while cols < dimension: # for every column in the row
+    while cols < dimension: # for every column in the 2d dimension per row
         # print "*" if:
         # it is currently the first column,
         # or the last row,
