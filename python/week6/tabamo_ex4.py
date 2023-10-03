@@ -5,10 +5,10 @@ security_pin = None
 MESSAGE = "Slay beshiee!!! Tama at korek na korek ang iyong inilagay na personal identification number!!!!!!"
 
 def menu() -> int:
-    """
-    This function prints a menu on the screen and asks the user for a choice.
-    
-    :returns: int - the choice of the user
+    """Prints a menu and asks for a choice.
+
+    Returns:
+        int: the choice of the user
     """
     # Print the menu
     print(
@@ -25,12 +25,14 @@ def menu() -> int:
     return num
 
 def secret_message(securityPin) -> str:
-    """
-    This function asks for the PIN to access a secret message.
-    
-    :returns: str - the security pin
-    """
+    """Prints the secret message if the PIN is correct.
 
+    Args:
+        securityPin (str): the current security PIN
+
+    Returns:
+        str: the security PIN
+    """
     # If there is no PIN, manage the PIN.
     if securityPin is None:
         securityPin = manage_pin(securityPin)
@@ -49,14 +51,19 @@ def secret_message(securityPin) -> str:
     else:
         print("Incorrect PIN!")
         return securityPin
+    
+    # This function always returns the securityPin.
+    return securityPin
 
 def manage_pin(securityPin) -> str:
-    """
-    This function allows the user to manage the PIN.
-    
-    :returns: str - the security pin
-    """
+    """Allows the user to manage the security PIN.
 
+    Args:
+        securityPin (str): the current security PIN
+
+    Returns:
+        str: the security PIN
+    """
     # If there is no PIN, ask for a PIN.
     if securityPin is None:
         print("No Security PIN!")
@@ -87,7 +94,7 @@ def manage_pin(securityPin) -> str:
         print("Wrong PIN!")
         return securityPin
 
-    # Ensures that the function always returns the securityPin.
+    # This function always returns the securityPin.
     return securityPin
 
 # MAIN PROGRAM LOOP
