@@ -1,3 +1,5 @@
+# Tabamo, Euan Jed S.
+# Assuming that we are not to use lists.
 # Input an integer n, followed by a list of n integers, and count the number of zeroes in the list.
 
 count = 0

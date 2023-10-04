@@ -1,3 +1,4 @@
+# Tabamo, Euan Jed S.
 # Input an integer n and print all divisors of n.
 # Example: n = 12, divisors = 1, 2, 3, 4, 6, 12
 
