@@ -1,10 +1,7 @@
+"""This program takes three positive integers A, B, and C, and finds the least common multiple of A, B, and C."""
 # Tabamo, Euan Jed S.
-# Input three positive integers A, B, and C, and find the least common multiple of A, B, and C.
 
-a = int(input("Enter A:"))
-b = int(input("Enter B:"))
-c = int(input("Enter C:"))
-
+# Define a function that takes three positive integers and returns their LCM
 def compute_LCM(num1, num2, num3):
     lcm = None
 
@@ -20,5 +17,15 @@ def compute_LCM(num1, num2, num3):
 
     return lcm
 
+# Input
+a = int(input("Enter A:"))
+b = int(input("Enter B:"))
+c = int(input("Enter C:"))
+
+# Input validity
+if a < 1 or b < 1 or c < 1:
+    raise ValueError("A, B, and C must be positive integers.")
+
+# Call the function and print the result
 lcm = compute_LCM(a,b,c)
 print(f"The LCM is {lcm}.")

@@ -1,10 +1,9 @@
+"""
+This program takes two positive integers A and B, and finds the least common multiple of A and B.
+"""
 # Tabamo, Euan Jed S.
-# Input two positive integers A and B, and find the least common multiple of A and B, i.e., the
-# smallest integer that is both a multiple of A and B.
 
-a = int(input("Enter A:"))
-b = int(input("Enter B:"))
-
+# Define a function that takes two positive integers and returns their LCM
 def compute_LCM(num1, num2):
     lcm = None
 
@@ -20,5 +19,14 @@ def compute_LCM(num1, num2):
 
     return lcm
 
+# Input
+a = int(input("Enter A:"))
+b = int(input("Enter B:"))
+
+# Input validity
+if a < 1 or b < 1:
+    raise ValueError("A and B must be positive integers.")
+
+# Call the function and print the result
 lcm = compute_LCM(a,b)
 print(f"The LCM is {lcm}.")
