@@ -511,7 +511,7 @@ Wrong PIN!
 
 ## Sample Output
 
-```powershell
+```console
 PS > py tabamo_ex4.py
  ============= MENU =============
  |   [0] Exit Program           |
