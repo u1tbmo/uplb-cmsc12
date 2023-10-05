@@ -205,7 +205,7 @@ def secret_message(securityPin) -> str:
     return securityPin
 ```
 
-Since `security_pin` is `None`, the program will call the `manage_pin()` function, with parameter `securityPin`, then store the return value to the variable `security_pin`.
+Since `security_pin` is `None`, the program will call the `manage_pin()` function, with parameter `securityPin`, then store the return value to the variable `securityPin`.
 
 ```python
     if securityPin is None:
@@ -285,7 +285,7 @@ This code will continually run until the user inputs a valid security PIN. The s
                 print("Invalid PIN.")
 ```
 
-The following is an example of this scenario.
+Sample Output:
 
 ```console
  ============= MENU =============
@@ -398,7 +398,7 @@ Otherwise, the function prints an error message and prematurely ends the functio
 Sample Output:
 
 ```console
-============= MENU =============
+ ============= MENU =============
  |   [0] Exit Program           |
  |   [1] Unlock Secret Message  |
  |   [2] Change Security PIN    |
