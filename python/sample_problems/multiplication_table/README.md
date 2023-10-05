@@ -29,7 +29,7 @@ for row in range(1,n+1):
 
 ### Further explanation
 
-`n` will be the maximum number of rows and columns in the table.Each row contains the multiples of the row number.
+`n` will be the maximum number of rows and columns in the table. Each row contains the multiples of the row number.
 
 Example: `n = 10`
 
