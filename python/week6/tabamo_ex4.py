@@ -4,6 +4,7 @@
 security_pin = None
 MESSAGE = "Slay beshiee!!! Tama at korek na korek ang iyong inilagay na personal identification number!!!!!!"
 
+
 def menu() -> int:
     """Prints a menu and asks for a choice.
 
@@ -23,6 +24,7 @@ def menu() -> int:
     # Ask for a choice
     num = int(input("[Choice] > "))
     return num
+
 
 def secret_message(securityPin) -> str:
     """Prints the secret message if the PIN is correct.
@@ -45,15 +47,16 @@ def secret_message(securityPin) -> str:
         print(
             "========THE SECRET MESSAGE========\n",
             MESSAGE
-            )
+        )
         return securityPin
     # If the PIN is incorrect, return the PIN, do not print the message.
     else:
         print("Incorrect PIN!")
         return securityPin
-    
+
     # This function always returns the securityPin.
     return securityPin
+
 
 def manage_pin(securityPin) -> str:
     """Allows the user to manage the security PIN.
@@ -96,6 +99,7 @@ def manage_pin(securityPin) -> str:
 
     # This function always returns the securityPin.
     return securityPin
+
 
 # MAIN PROGRAM LOOP
 RUNNING = True
