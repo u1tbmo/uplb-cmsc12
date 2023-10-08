@@ -18,7 +18,7 @@ rows = 3 # number of rows of the current trapezoid
 # Iterate through n trapezoids
 while count < n:
     # Print the trapezoid
-    for i in range(rows):
+    for i in range(count, rows):
         spaces_bef_aft = max_width_row - i # number of spaces before and after the asterisks
         asterisks = 2*i + 1 # number of asterisks
         print("  "*spaces_bef_aft, end="")
