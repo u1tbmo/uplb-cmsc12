@@ -81,7 +81,7 @@ while count < n:
 
 In this code, we print each trapezoid (triangle actually since there is a semantic error in this code) by printing rows of asterisks. The number of asterisks in each row is determined by the formula `2 * i + 1`, where `i` is the current row number. The number of spaces before and after the asterisks is determined by the formula `half_width_bottom_row - i`, where `i` is the current row number.
 
-This means that since we already know the maximum width of the tree (which is `1 + (2 * n)`), we can use that to determine the number of spaces before and after the asterisks, we just decrease the spaces by 2 for each row since we are increasing the number of asterisks by 2 for each row. Remember that `spaces_bef_aft` is just the spaces before and after the asterisks, and since `spaces_bef_aft` depends on the half width of the bottom row, we just print `spaces_bef_aft` spaces before and after the asterisks to center the asterisks.
+This means that since we already know half the maximum width of the tree (which is `1 + (2 * n)`), we can use that to determine the number of spaces before and after the asterisks, we just decrease the spaces by 2 for each row (1 for each `spaces_bef_aft`, hence why `spaces_bef_aft = half_width_bottom_row - i`) since we are increasing the number of asterisks by 2 for each row. Remember that `spaces_bef_aft` is just the spaces before and after the asterisks, and since `spaces_bef_aft` depends on the half width of the bottom row, we just print `spaces_bef_aft` spaces before and after the asterisks to center the asterisks.
 
 The problem with this code is that it would print rows starting from 1 regardless of which trapezoid is currently being printed.
 
