@@ -19,7 +19,7 @@ if n < 1:
     raise ValueError("n must be positive")
 
 count = 0
-half_width_bottom_row = 1 + (2*n)
+half_width_bottom_row = 2 * n
 rows = 3
 ```
 
@@ -60,7 +60,7 @@ rows = 3
 The `count` variable is used to count the number of trapezoids printed.
 
 The `half_width_bottom_row` variable is used to determine half the maximum width of the tree. This value comes from the following logic:
-`n` is the number of trapezoids to be printed. Since the `half_width_bottom_row` is half the width, we know that `1 + (2 * n)` will give us the length of the spaces to the left and the right of the center. The additional 1 is there to include the center, because the tree will always have an odd width.
+`n` is the number of trapezoids to be printed. Since the `half_width_bottom_row` is half the width, we know that `2 * n` will give us the length of the spaces to the left and the right of the center.
 
 For example: If `n = 4`, there would be 4 trapezoids, with the following widths: `3,5,7,9`
 Using `2 * n` we know that there would be 8 spaces to the left and right of the center. Adding 1 to that gives us 9, which is the width of the bottom row of the tree.
@@ -81,7 +81,7 @@ while count < n:
 
 In this code, we print each trapezoid (triangle actually since there is a semantic error in this code) by printing rows of asterisks. The number of asterisks in each row is determined by the formula `2 * i + 1`, where `i` is the current row number. The number of spaces before and after the asterisks is determined by the formula `half_width_bottom_row - i`, where `i` is the current row number.
 
-This means that since we already know half the maximum width of the tree (which is `1 + (2 * n)`), we can use that to determine the number of spaces before and after the asterisks, we just decrease the spaces by 2 for each row (1 for each `spaces_bef_aft`, hence why `spaces_bef_aft = half_width_bottom_row - i`) since we are increasing the number of asterisks by 2 for each row. Remember that `spaces_bef_aft` is just the spaces before and after the asterisks, and since `spaces_bef_aft` depends on the half width of the bottom row, we just print `spaces_bef_aft` spaces before and after the asterisks to center the asterisks.
+This means that since we already know half the maximum width of the tree (which is `2 * n`), we can use that to determine the number of spaces before and after the asterisks, we just decrease the spaces by 2 for each row (1 for each `spaces_bef_aft`, hence why `spaces_bef_aft = half_width_bottom_row - i`) since we are increasing the number of asterisks by 2 for each row. Remember that `spaces_bef_aft` is just the spaces before and after the asterisks, and since `spaces_bef_aft` depends on the half width of the bottom row, we just print `spaces_bef_aft` spaces before and after the asterisks to center the asterisks.
 
 The problem with this code is that it would print rows starting from 1 regardless of which trapezoid is currently being printed.
 
