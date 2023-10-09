@@ -12,7 +12,7 @@ if n < 1:
 
 # Initialize variables
 count = 0 # number of trapezoids printed
-half_width_bottom_row = 3 + (2*(n-1)) # calculates half of the width of the bottom row of the tree (since we will be using it twice per row)
+half_width_bottom_row = 1 + (2*n) # calculates half of the width of the bottom row of the tree (since we will be using it twice per row)
 rows = 3 # number of rows of the current trapezoid
 
 # Iterate through n trapezoids
