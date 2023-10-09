@@ -12,14 +12,14 @@ if n < 1:
 
 # Initialize variables
 count = 0 # number of trapezoids printed
-max_width_row = 3 + (2*(n-1)) # calculates the width of the bottom row of the last trapezoid
+half_width_bottom_row = 3 + (2*(n-1)) # calculates half of the width of the bottom row of the tree (since we will be using it twice per row)
 rows = 3 # number of rows of the current trapezoid
 
 # Iterate through n trapezoids
 while count < n:
     # Print the trapezoid
     for i in range(count, rows):
-        spaces_bef_aft = max_width_row - i # number of spaces before and after the asterisks
+        spaces_bef_aft = half_width_bottom_row - i # number of spaces before and after the asterisks
         asterisks = 2*i + 1 # number of asterisks
         print("  "*spaces_bef_aft, end="")
         print("* "*asterisks, end="")
@@ -30,7 +30,8 @@ while count < n:
     count += 1
 
 # get the length of the longest line
-max_length = len("  "*((2*max_width_row+1))) # 2*max_width_row+1 is the length of the longest line
+# since half_width_bottom_row is half of the width of the bottom row, we multiply it by 2 and add 1 to get the length of the longest line
+max_length = len("  "*((2*half_width_bottom_row+1)))
 
 # print a centered "Merry Christmas!" christmas_message
 christmas_message = "Merry Christmas!"
