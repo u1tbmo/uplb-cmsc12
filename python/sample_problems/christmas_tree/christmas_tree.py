@@ -12,7 +12,7 @@ if n < 1:
 
 # Initialize variables
 count = 0 # number of trapezoids printed
-max_width_row = 3 + (2*(n-1)) # row with the maximum width
+max_width_row = 3 + (2*(n-1)) # calculates the width of the bottom row of the last trapezoid
 rows = 3 # number of rows of the current trapezoid
 
 # Iterate through n trapezoids
@@ -29,8 +29,8 @@ while count < n:
     rows += 2
     count += 1
 
-# get the length of the max width row of the last trapezoid
-max_length = len("  "*((2*max_width_row+1)))
+# get the length of the longest line
+max_length = len("  "*((2*max_width_row+1))) # 2*max_width_row+1 is the length of the longest line
 
 # print a centered "Merry Christmas!" christmas_message
 christmas_message = "Merry Christmas!"
