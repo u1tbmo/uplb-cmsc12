@@ -19,7 +19,7 @@ if n < 1:
     raise ValueError("n must be positive")
 
 count = 0
-half_width_bottom_row = 3 + (2*(n-1))
+half_width_bottom_row = 1 + (2*n)
 rows = 3
 ```
 
