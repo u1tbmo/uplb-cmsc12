@@ -22,7 +22,7 @@ for i in range(n):
     if i == n-1: # n-1 because we start at 0
         print(" "*(n-i), end="")
         print("* "*n, end="")
-        print(" "*(n-i), end="")
+        print(" "*(n-i))
         continue
 
     print(" "*(n-i), end="")
