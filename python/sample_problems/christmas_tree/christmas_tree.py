@@ -30,8 +30,9 @@ while count < n:
     count += 1
 
 # get the length of the longest line
-# since half_width_bottom_row is half of the width of the bottom row, we multiply it by 2 and add 1 to get the length of the longest line
-max_length = len("  "*((2*half_width_bottom_row+1)))
+# 2 * half_width_bottom_row + 1 is the number of times we are printing either spaces or asterisks in the bottom row
+# since the spaces or asterisks printed have a length of 2, we multiply it by 2 to get the actual max length
+max_length = 2 * (2 * half_width_bottom_row + 1)
 
 # print a centered "Merry Christmas!" christmas_message
 christmas_message = "Merry Christmas!"

@@ -40,7 +40,7 @@ while count < n:
 > Print the Merry Christmas message.
 
 ```python
-max_length = len("  "*((2*half_width_bottom_row+1)))
+max_length = 2 * (2 * half_width_bottom_row + 1)
 
 christmas_message = "Merry Christmas!"
 christmas_message = christmas_message.center(max_length)
@@ -53,7 +53,7 @@ The initialized variables are as follows:
 
 ```python
 count = 0
-half_width_bottom_row = 1 + (2*n)
+half_width_bottom_row = 2 * n
 rows = 3
 ```
 
@@ -141,3 +141,13 @@ Enter n: 3
 ```
 
 The result is that it seems like each trapezoid is one row longer than the previous trapezoid.
+
+To center the Merry Christmas message, we can use the center() method on the string object, which takes an integer. Since the maximum length of the string is the maximum width of the tree, we can use the formula `2 * (2 * half_width_bottom_row + 1)` to get the maximum length of the string.
+
+```python
+max_length = 2 * (2 * half_width_bottom_row + 1)
+
+christmas_message = "Merry Christmas!"
+christmas_message = christmas_message.center(max_length)
+print(christmas_message)
+```
