@@ -21,6 +21,8 @@ def encrypt_text(text, key):
     # This function uses the maketrans() and translate() methods for strings
     # maketrans() - https://www.w3schools.com/python/ref_string_maketrans.asp
     # translate() - https://www.w3schools.com/python/ref_string_translate.asp
+    # Already solved by me previously before this exercise was given.
+    # https://exercism.org/tracks/python/exercises/rotational-cipher/solutions/u1tbmo
 
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     # cipher is the rotated alphabet using the key
@@ -47,45 +49,57 @@ def menu() -> int:
 
     return int(input("Enter Choice: "))
 
-def enter_text() -> list:
-    """ This function allows the user to enter a certain amount of text and add it to the list.
+def enter_text(t_lst, lst1, lst2) -> list:
+    """This function allows the user to create a list of text and add it to the lis.
+
+    Args:
+        t_lst (list): the list of text
+        lst1 (list): the list of first level encrypted text
+        lst2 (list): the list of second level encrypted text
 
     Returns:
-        (list) - the list of text
+        list: the list of text
     """
+
+    # Clear the lists
+    t_lst.clear()
+    lst1.clear()
+    lst2.clear()
+
+    # Ask the user how many text they want to add
     num_of_inputs = int(input("How many do you want to add?\n >>> "))
 
-    text_to_add = []
+    # Ask the user for the text num_of_inputs times
     for i in range(num_of_inputs):
         element = input(f"[{i + 1}] ")
-        # if there is a space in the text
+        # if there is a space in the text, return an empty list
         if " " in element:
             print("No spaces allowed!")
-            text_to_add.clear()
-            return text_to_add
+            t_lst.clear()
+            return t_lst
 
-        # if there is a number in the text
+        # if there is a number in the text, return an empty list
         for char in element:
             if char.isnumeric():
                 print("No numbers allowed!")
-                text_to_add.clear()
-                return text_to_add
+                t_lst.clear()
+                return t_lst
 
-        text_to_add.append(element.lower())
+        t_lst.append(element.lower())
 
-    return text_to_add
+    return t_lst
 
 
-def encrypt(t_lst, lst1, lst2):
+def encrypt(t_lst, lst1, lst2) -> list:
     """ This function encrypts the text_list.
 
-    Arguments:
+    Args:
         t_lst (list) - the list of text to be encrypted
         lst1 (list) - the list to store first level encrypted text
         lst2 (list) - the list to store second level encrypted text
 
     Returns:
-        (list) - the first level and second level encrypted text
+        list - the first level and second level encrypted text
     """
     # Check if the text list has text.
     if len(t_lst) == 0:
@@ -99,12 +113,12 @@ def encrypt(t_lst, lst1, lst2):
     key1 = int(input("First Level Shift: "))
     key2 = int(input("Second Level Shift: "))
 
-    # Encrypt to the first level
+    # Encrypt to the first level by calling encrypt_text()
     for text in t_lst:
         enc_text_1 = encrypt_text(text, key1)
         lst1.append(enc_text_1)
 
-    # Encrypt to the second level
+    # Encrypt to the second level by calling encrypt_text()
     for text in lst1:
         enc_text_2 = encrypt_text(text, key2)
         lst2.append(enc_text_2)
@@ -113,24 +127,17 @@ def encrypt(t_lst, lst1, lst2):
     return [lst1, lst2]
 
 
-def view_encrypted(t_lst, lst1, lst2):
+def view_encrypted(t_lst, lst1, lst2) -> None:
     """ This function allows the user to see the encryption process.
 
-    Arguments:
+    Args:
         t_lst (list) - the list of text to be encrypted
         lst1 (list) - the list of first level encrypted text
         lst2 (list) - the list of second level encrypted text
-
-    Returns:
-        None
     """
     # Check if the encrypted text lists have encrypted text.
     if len(lst1) == 0 or len(lst2) == 0:
         print("No ciphered text yet!")
-
-    # Check if all text have been encrypted
-    elif len(t_lst) > (len(lst1) or len(lst2)):
-        print("Not all text has been encrypted!")
         
     else:
         for i, text in enumerate(t_lst):
@@ -141,7 +148,7 @@ RUNNING = True
 while RUNNING:
     choice = menu()
     if choice == 1:
-        text_list += enter_text()
+        text_list = enter_text(text_list, encrypted_1, encrypted_2)
     elif choice == 2:
         # since encrypt() returns a list, we can unpack the list into their respective lists
         encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
