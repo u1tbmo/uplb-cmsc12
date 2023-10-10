@@ -72,19 +72,6 @@ def enter_text(t_lst, lst1, lst2) -> list:
     # Ask the user for the text num_of_inputs times
     for i in range(num_of_inputs):
         element = input(f"[{i + 1}] ")
-        # if there is a space in the text, return an empty list
-        if " " in element:
-            print("No spaces allowed!")
-            t_lst.clear()
-            return t_lst
-
-        # if there is a number in the text, return an empty list
-        for char in element:
-            if char.isnumeric():
-                print("No numbers allowed!")
-                t_lst.clear()
-                return t_lst
-
         t_lst.append(element.lower())
 
     return t_lst
