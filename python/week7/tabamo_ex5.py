@@ -50,7 +50,7 @@ def menu() -> int:
     return int(input("Enter Choice: "))
 
 def enter_text(t_lst, lst1, lst2) -> list:
-    """This function allows the user to create a list of text and add it to the lis.
+    """ This function allows the user to create a list of text and add it to the lis.
 
     Args:
         t_lst (list): the list of text
