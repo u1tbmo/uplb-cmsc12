@@ -139,7 +139,7 @@ RUNNING = True
 while RUNNING:
     choice = menu()
     if choice == 1:
-        text_list = enter_text()
+        text_list += enter_text()
     elif choice == 2:
         # since encrypt() returns a list, we can unpack the list into their respective lists
         encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
