@@ -50,7 +50,8 @@ def menu() -> int:
 def enter_text() -> list:
     """ This function allows the user to enter a certain amount of text and add it to the list.
 
-
+    Returns:
+        (list) - the list of text
     """
     num_of_inputs = int(input("How many do you want to add?\n >>> "))
 
@@ -127,6 +128,7 @@ def view_encrypted(t_lst, lst1, lst2):
     if len(lst1) == 0 or len(lst2) == 0:
         print("No ciphered text yet!")
 
+    # Check if all text have been encrypted
     elif len(t_lst) > (len(lst1) or len(lst2)):
         print("Not all text has been encrypted!")
         
