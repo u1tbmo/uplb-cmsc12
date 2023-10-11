@@ -20,6 +20,7 @@ def encrypt_text(text, key):
     Returns:
         str - the encrypted text
     """
+    
     # maketrans() - https://www.w3schools.com/python/ref_string_maketrans.asp
     # translate() - https://www.w3schools.com/python/ref_string_translate.asp
 
@@ -92,6 +93,7 @@ def menu() -> int:
     Returns:
         int - the choice
     """
+
     print(
         "\n"
         "==========================\n",
@@ -183,7 +185,8 @@ def encrypt(t_lst, enc1, enc2) -> list:
 
 def view_encrypted(t_lst, enc1, enc2) -> None:
     """This function allows the user to see the encryption process.
-    """    
+    """
+
     # Check if the encrypted text lists have encrypted text.
     if len(enc1) == 0 or len(enc2) == 0:
         print("No ciphered text yet!")
