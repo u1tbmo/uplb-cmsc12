@@ -8,7 +8,7 @@ encrypted_1 = []
 encrypted_2 = []
 
 
-def encrypt_text(text, key):
+def encrypt_text(text, key) -> str:
     """This function encrypts text using a key.
 
     This version uses the maketrans() and translate() methods for strings.
@@ -20,7 +20,7 @@ def encrypt_text(text, key):
     Returns:
         str - the encrypted text
     """
-    
+
     # maketrans() - https://www.w3schools.com/python/ref_string_maketrans.asp
     # translate() - https://www.w3schools.com/python/ref_string_translate.asp
 
