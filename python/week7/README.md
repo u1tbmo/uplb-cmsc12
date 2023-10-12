@@ -472,8 +472,8 @@ enc2  = ["ibmmp", "xpsme"]
 
 ```console
 Enter Choice: 3
-[1] kdoor ===> ibmmp ===> ibmmp
-[2] zruog ===> xpsme ===> xpsme
+[1] hallo ===> kdoor ===> ibmmp
+[2] world ===> zruog ===> xpsme
 ```
 
 This function does not return anything, it just prints the text.
