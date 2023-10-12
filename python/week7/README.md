@@ -412,7 +412,7 @@ Then, we use a for loop to encrypt the text in the list of text using the first 
         enc1.append(enc_text_1)
 ```
 
-Then, we use a for loop to encrype the text in enc1 using the second key.
+Then, we use a for loop to encrypt the text in enc1 using the second key.
 
 ```python
     for text in enc1:
