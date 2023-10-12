@@ -513,7 +513,7 @@ while RUNNING:
 
 The main program loop only does the following.
 
-1. Prints the menu and asks for the user’s choice, which is then assigned to the variable `choice`.
+1. Prints the menu which asks for the user’s choice, which is then assigned to the variable `choice`.
 2. Check the `choice` variable using conditionals.
 3. Proceed to the function/code block depending on the `choice` variable.
 
