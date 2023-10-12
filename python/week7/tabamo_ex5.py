@@ -160,14 +160,10 @@ def encrypt(t_lst, enc1, enc2) -> list:
     key2 = int(input("Second Level Shift: "))
 
     # since the key can be any integer, we need to make sure that it is within the range of -26 to 26
-    if key1 > 26:
+    if key1 > 26 or key1 < -26:
         key1 = key1 % 26
-    elif key1 < -26:
-        key1 = key1 % -26
-    if key2 > 26:
+    if key2 > 26 or key2 < -26:
         key2 = key2 % 26
-    elif key2 < -26:
-        key2 = key2 % -26
 
     # Encrypt to the first level by calling encrypt_text()
     for text in t_lst:
