@@ -211,7 +211,12 @@ while RUNNING:
         text_list, encrypted_1, encrypted_2 = enter_text(text_list, encrypted_1, encrypted_2)
 
     elif choice == 2:
-        # since encrypt() returns a list of two lists
+        # # since encrypt() returns a list of two lists, we can access the lists using indexing
+        # lists = encrypt(text_list, encrypted_1, encrypted_2)
+        # encrypted_1 = lists[0]
+        # encrypted_2 = lists[1]
+
+        # better alternative: since encrypt() returns a list of two lists
         # we can use multiple assignment to assign the lists to the variables
         encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
 
