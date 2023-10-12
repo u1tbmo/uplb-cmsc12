@@ -199,26 +199,10 @@ RUNNING = True
 while RUNNING:
     choice = menu()
     if choice == 1:
-        # # since enter_text() returns a list of three lists, we can access the lists using indexing
-        
-        # lists = enter_text(text_list, encrypted_1, encrypted_2)
-        # text_list = lists[0]
-        # encrypted_1 = lists[1]
-        # encrypted_2 = lists[2]
-
-        # better alternative: since enter_text() returns a list of three lists
-        # we can use multiple assignment to assign the lists to the variables
-        text_list, encrypted_1, encrypted_2 = enter_text(text_list, encrypted_1, encrypted_2)
+        enter_text(text_list, encrypted_1, encrypted_2)
 
     elif choice == 2:
-        # # since encrypt() returns a list of two lists, we can access the lists using indexing
-        # lists = encrypt(text_list, encrypted_1, encrypted_2)
-        # encrypted_1 = lists[0]
-        # encrypted_2 = lists[1]
-
-        # better alternative: since encrypt() returns a list of two lists
-        # we can use multiple assignment to assign the lists to the variables
-        encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
+        encrypt(text_list, encrypted_1, encrypted_2)
 
     elif choice == 3:
         view_encrypted(text_list, encrypted_1, encrypted_2)

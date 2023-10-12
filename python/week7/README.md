@@ -20,10 +20,10 @@ RUNNING = True
 while RUNNING:
     choice = menu()
     if choice == 1:
-        text_list, encrypted_1, encrypted_2 = enter_text(text_list, encrypted_1, encrypted_2)
+        enter_text(text_list, encrypted_1, encrypted_2)
 
     elif choice == 2:
-        encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
+        encrypt(text_list, encrypted_1, encrypted_2)
 
     elif choice == 3:
         view_encrypted(text_list, encrypted_1, encrypted_2)
@@ -351,20 +351,11 @@ Then, we use a for loop to ask the user for the text inputs and add it to the te
         t_lst.append(element)
 ```
 
-We then return all three lists, this is because we want to override the previous lists with the new lists.
+We then return all three lists, as they were all modified.
 
 ```python
     return [t_lst, enc1, enc2]
 ```
-
-Note: we are returning only one list with the three lists inside of it. To separate the lists, we can use either indexing or multiple assignment. Multiple assignment is used in this case, as seen in the main program loop.
-
-```python
-if choice == 1:
-        text_list, encrypted_1, encrypted_2 = enter_text(text_list, encrypted_1, encrypted_2)
-```
-
-This assigns `t_lst` to `text_list`, `enc1` to `encrypted_1`, and `enc2` to `encrypted_2`.
 
 ### `encrypt()`, explained
 
@@ -426,15 +417,6 @@ Finally, we return the two encrypted text lists.
     return [enc1, enc2]
 ```
 
-Again, since the function returns a list with the two lists inside of it, we use multiple assignment to assign the two lists to the two encrypted text lists.
-
-```python
-    elif choice == 2:
-        encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
-```
-
-This assigns `enc1` to `encrypted_1` and `enc2` to `encrypted_2`.
-
 ### `view_encrypted()`, explained
 
 This function allows the user to see the encryption process.
@@ -491,10 +473,10 @@ RUNNING = True
 while RUNNING:
     choice = menu()
     if choice == 1:
-        text_list, encrypted_1, encrypted_2 = enter_text(text_list, encrypted_1, encrypted_2)
+        enter_text(text_list, encrypted_1, encrypted_2)
 
     elif choice == 2:
-        encrypted_1, encrypted_2 = encrypt(text_list, encrypted_1, encrypted_2)
+        encrypt(text_list, encrypted_1, encrypted_2)
 
     elif choice == 3:
         view_encrypted(text_list, encrypted_1, encrypted_2)
@@ -527,3 +509,31 @@ The program only exits the loop if the choice is 4, which is to exit the program
         RUNNING = False
         print("Bye!")
 ```
+
+### Why are we not assigning the return value of the functions?
+
+One thing you may notice is that the three lists are passed to every function. Yet, we do not assign the return value of each function.
+
+Notice how every the return value of `enter_text` and `encrypt` are not assigned to anything. We just call the functions.
+
+```python
+    if choice == 1:
+        enter_text(text_list, encrypted_1, encrypted_2)
+
+    elif choice == 2:
+        encrypt(text_list, encrypted_1, encrypted_2)
+```
+
+We are modifying the lists in the functions, so how come we do not assign the return value of each function?
+
+This is because when we call functions and pass the three lists as arguments, we are actually passing the reference of the lists.
+
+Meaning, anything we do to the lists in the functions will also be done to the lists globally.
+
+Though the functions still have the return value, we do not need to assign them to anything since we are already modifying the lists globally.
+
+While technically we do not need the return statements, if we were to use the functions outside of this program, we would need the return statements. Especially if we were to access the function from another file or program.
+
+Since the goal of functions is the ability for them to be reused, we need to make sure that the functions are not dependent on the global variables.
+
+So while the this program does not need the return statements, it is still good practice to include them in the functions.
