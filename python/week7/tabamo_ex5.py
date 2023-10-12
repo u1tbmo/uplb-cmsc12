@@ -43,7 +43,7 @@ def encrypt_text(text, key) -> str:
 
 # This is an alternative solution to encrypt_text() using a loop,
 # though it is not used in the main program loop below,
-# it is left as a comment since it is a valid solution that does not use maketrans() and translate()
+# it is left as an unused function here since it is a valid solution that does not use maketrans() and translate()
 def encrypt_text_loop_version(text, key) -> str:
     """This function encrypts text using a key.
 
