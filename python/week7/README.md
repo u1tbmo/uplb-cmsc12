@@ -512,9 +512,9 @@ The program only exits the loop if the choice is 4, which is to exit the program
 
 ### Why are we not assigning the return value of the functions?
 
-One thing you may notice is that the three lists are passed to every function. Yet, we do not assign the return value of each function.
+One thing you may notice is that the three lists are passed to `enter_text` and `encrypt`. Yet, we do not assign the return value of each function.
 
-Notice how every the return value of `enter_text` and `encrypt` are not assigned to anything. We just call the functions.
+Notice how every return value of `enter_text` and `encrypt` are not assigned to anything. We just call the functions.
 
 ```python
     if choice == 1:
