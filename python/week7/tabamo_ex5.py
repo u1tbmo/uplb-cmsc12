@@ -11,15 +11,15 @@ encrypted_2 = []
 def encrypt_text(text, key) -> str:
     """This function encrypts text using a key.
 
-    This version uses the maketrans() and translate() methods for strings.
+    This version uses maketrans() and translate().
 
-    Arguments:
-        text (str) - the text to be encrypted
-        key (int) - the rotational key for the cypher
-    
+    Args:
+        text (str): the text to be encrypted
+        key (int): the rotational key for the cypher
+
     Returns:
-        str - the encrypted text
-    """
+        str: the encrypted text
+    """    
 
     # maketrans() - https://www.w3schools.com/python/ref_string_maketrans.asp
     # translate() - https://www.w3schools.com/python/ref_string_translate.asp
@@ -46,16 +46,16 @@ def encrypt_text(text, key) -> str:
 # it is left as an unused function here since it is a valid solution that does not use maketrans() and translate()
 def encrypt_text_loop_version(text, key) -> str:
     """This function encrypts text using a key.
-
+    
     This version uses a for loop to iterate through every character in the text.
 
-    Arguments:
-        text (str) - the text to be encrypted
-        key (int) - the rotational key for the cypher
-    
+    Args:
+        text (str): the text to be encrypted
+        key (int): the rotational key for the cypher
+
     Returns:
-        str - the encrypted text
-    """
+        str: the encrypted text
+    """    
 
     # create a string of the alphabet
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
