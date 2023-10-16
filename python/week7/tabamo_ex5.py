@@ -181,7 +181,12 @@ def encrypt(t_lst, enc1, enc2) -> list:
 
 def view_encrypted(t_lst, enc1, enc2) -> None:
     """This function allows the user to see the encryption process.
-    """
+
+    Args:
+        t_lst (list): the unencrypted text list
+        enc1 (list): the first level encrypted text list
+        enc2 (list): the second level encrypted text list
+    """    
 
     # Check if the encrypted text lists have encrypted text.
     if len(enc1) == 0 or len(enc2) == 0:
