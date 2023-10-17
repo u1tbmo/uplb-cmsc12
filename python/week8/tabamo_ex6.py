@@ -27,7 +27,7 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
 
 # Main Functions
 
-def menu() -> int:
+def menu() -> str:
     """Prints a menu and asks the user for a choice.
 
     Returns:
@@ -44,7 +44,7 @@ def menu() -> int:
         "[6] Exit",
     )
 
-    return int(input("Choice: "))
+    return input("Choice: ")
 
 
 def viewPortfolio(s_dict: dict[str, list]) -> None:
@@ -262,17 +262,17 @@ while True:
     c = menu()
 
     # Check choice
-    if c == 1:
+    if c == "1":
         viewPortfolio(stock_dict)
-    elif c == 2:
+    elif c == "2":
         stock_dict = buyStock(stock_dict)
-    elif c == 3:
+    elif c == "3":
         stock_dict = sellStock(stock_dict)
-    elif c == 4:
+    elif c == "4":
         stock_dict = changePrice(stock_dict)
-    elif c == 5:
+    elif c == "5":
         stock_dict = sellAll(stock_dict)
-    elif c == 6:
+    elif c == "6":
         stock_dict = print("See you next time!")
         break
     else:
