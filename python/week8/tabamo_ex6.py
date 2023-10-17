@@ -248,7 +248,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
         print("\nINFO: All stocks have been liquidated.")
     else:
-        print(f"\nINFO: {confirmation} does not match 'Y'. Cannot confirm liquidation.")
+        print(f"\nINFO: '{confirmation}' does not match 'Y'. Cannot confirm liquidation.")
 
     # Return the updated portfolio
     return s_dict
