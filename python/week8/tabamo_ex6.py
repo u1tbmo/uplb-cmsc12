@@ -230,7 +230,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
     # Check if there are stocks to liquidate
     if len(s_dict) == 1 or all_zero:
-        print("\nERROR: No stock assets to liquidate")
+        print("ERROR: No stock assets to liquidate")
         # Return the portfolio as is
         return s_dict
 
