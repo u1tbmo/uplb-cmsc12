@@ -8,7 +8,7 @@ stock_dict = {
 }
 
 
-def clean_dict(s_dict: dict) -> dict:
+def clean_dict(s_dict: dict[str, list]) -> dict:
     """Removes stocks with 0 quantity from the portfolio except for cash.
 
     Args:
@@ -44,7 +44,7 @@ def menu() -> int:
     return int(input("Choice: "))
 
 
-def viewPortfolio(s_dict: dict) -> None:
+def viewPortfolio(s_dict: dict[str, list]) -> None:
     """Displays a report of cash and stock assets along with their information
     and current value per line item.
 
@@ -63,7 +63,7 @@ def viewPortfolio(s_dict: dict) -> None:
     print("=======================================================================")
 
 
-def buyStock(s_dict: dict) -> dict:
+def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     """Allows the user to buy stock.
 
     Args:
@@ -101,7 +101,7 @@ def buyStock(s_dict: dict) -> dict:
     return s_dict
 
 
-def sellStock(s_dict: dict) -> dict:
+def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     """Allows the user to sell stock.
 
     Args:
@@ -140,7 +140,7 @@ def sellStock(s_dict: dict) -> dict:
     return s_dict
 
 
-def changePrice(s_dict: dict) -> dict:
+def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
     """Allows the user to change the price of a stock.
 
     Args:
@@ -177,7 +177,7 @@ def changePrice(s_dict: dict) -> dict:
     return s_dict
 
 
-def sellAll(s_dict: dict) -> dict:
+def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     """Allows the user to liquidate all stocks.
 
     Args:
