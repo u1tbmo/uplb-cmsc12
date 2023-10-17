@@ -1,6 +1,5 @@
 """
-This program keeps track of the the stock symbols, stock descriptions,
-stock quantity, and stock price for the company's stock.
+This program is a stock portfolio tracking system.
 """
 
 # Global Variable
