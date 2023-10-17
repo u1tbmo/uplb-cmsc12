@@ -75,7 +75,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks
     """    
-    print("===== Buy Stock =====")
+    print("===== Buy Stock =====\n")
 
     # Ask for stock symbol
     s_symb = input("Enter Stock Symbol: ").upper().strip()
@@ -98,10 +98,10 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     # Check if there is enough cash
     if s_dict["CASH"][1] < (s_quantity * s_price):
-        print("ERROR: Not enough cash.")
+        print(f"\nERROR: Not enough cash.")
     # If there is enough cash, add the stock to the portfolio
     else:
-        print(f"INFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+        print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
         # If this is not a new entry, add the previous quantity to the new quantity
         if not new_entry:
             s_quantity += s_dict[s_symb][1]
@@ -123,7 +123,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks
     """    
-    print("===== Sell Stock =====")
+    print("===== Sell Stock =====\n")
 
         # Check if all stocks have 0 quantity
     all_zero = True
@@ -134,7 +134,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     # Check if there are stocks to liquidate
     if len(s_dict) == 1 or all_zero:
-        print("ERROR: No stock assets to sell")
+        print("\nERROR: No stock assets to sell")
         # Return the portfolio as is
         return s_dict
 
@@ -143,23 +143,23 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     # You cannot sell cash
     if s_symb == "CASH":
-        print("ERROR: Cannot sell cash")
+        print("\nERROR: Cannot sell cash")
     # Check if stock symbol is in portfolio
     elif s_symb not in s_dict:
-        print(f"ERROR: {s_symb} not in portfolio")
+        print(f"\nERROR: {s_symb} not in portfolio")
     # Check if there are shares for the stock
     elif s_dict[s_symb][1] == 0:
-        print(f"ERROR: {s_symb} has no shares")
+        print(f"\nERROR: {s_symb} has no shares")
     else:
         # Ask for quantity
         s_quantity = float(input("Enter Number of Shares to Sell: "))
         # If there is not enough shares, you cannot sell
         if s_quantity > s_dict[s_symb][1]:
-            print(f"ERROR: Not enough shares")
+            print(f"\nERROR: Not enough shares")
         else:
             # Ask for price
             s_price = float(input("Enter Current Price per Share: "))
-            print(f"INFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+            print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
 
             # Add the total price to the cash and update the stock details
             s_dict["CASH"][1] += s_quantity * s_price
@@ -178,11 +178,11 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks
     """    
-    print("===== Change Stock Price =====")
+    print("===== Change Stock Price =====\n")
 
     # Check if there are stocks to change
     if len(s_dict) == 1:
-        print("ERROR: No stock assets to change")
+        print("\nERROR: No stock assets to change")
         # Return the portfolio as is
         return s_dict
     
@@ -191,17 +191,17 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
 
     # You cannot change the price of cash
     if s_symb == "CASH":
-        print("ERROR: Cannot change price of cash")
+        print("\nERROR: Cannot change price of cash")
     # Check if stock symbol is in portfolio
     elif s_symb not in s_dict:
-        print(f"ERROR: {s_symb} not in portfolio")
+        print(f"\nERROR: {s_symb} not in portfolio")
     # Check if there are shares for the stock
     elif s_dict[s_symb][1] == 0:
         print(f"ERROR: {s_symb} has no shares")
     else:
         # Ask for price
         s_price = float(input("Enter New Price per Share: "))
-        print(f"INFO: {s_symb} price changed to {s_price:.2f}")
+        print(f"\nINFO: {s_symb} price changed to {s_price:.2f}")
 
         # Update the stock details
         s_dict[s_symb] = [s_dict[s_symb][0], s_dict[s_symb][1], s_price]
@@ -219,7 +219,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks
     """    
-    print("===== Liquidate All Stocks =====")
+    print("===== Liquidate All Stocks =====\n")
     
     # Check if all stocks have 0 quantity
     all_zero = True
@@ -230,14 +230,14 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
     # Check if there are stocks to liquidate
     if len(s_dict) == 1 or all_zero:
-        print("ERROR: No stock assets to liquidate")
+        print("\nERROR: No stock assets to liquidate")
         # Return the portfolio as is
         return s_dict
 
 
     # Ask for confirmation
-    confirmed = input("Are you sure you want to sell all your stocks? [Y] to confirm.\n > ").upper()
-    if confirmed == "Y":
+    confirmation = input("Are you sure you want to sell all your stocks? [Y] to confirm.\n > ")
+    if confirmation == "Y":
         # for every key, val tuple in the portfolio that is not cash
         for key, val in s_dict.items():
             if key != "CASH":
@@ -246,9 +246,9 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
                 s_dict["CASH"][1] += val[1] * val[2]
                 s_dict[key] = [val[0], 0, val[2]]
 
-        print("INFO: All stocks have been liquidated.")
+        print("\nINFO: All stocks have been liquidated.")
     else:
-        print("INFO: No action taken.")
+        print(f"\nINFO: {confirmation} does not match 'Y'. Cannot confirm liquidation.")
 
     # Return the updated portfolio
     return s_dict
