@@ -125,8 +125,15 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     """    
     print("===== Sell Stock =====")
 
-    # Check if there are stocks to sell
-    if len(s_dict) == 1:
+        # Check if all stocks have 0 quantity
+    all_zero = True
+    for key, val in s_dict.items():
+        if val[1] != 0 and key != "CASH":
+            all_zero = False
+            break
+
+    # Check if there are stocks to liquidate
+    if len(s_dict) == 1 or all_zero:
         print("ERROR: No stock assets to sell")
         # Return the portfolio as is
         return s_dict
