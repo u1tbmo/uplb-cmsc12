@@ -125,7 +125,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     """    
     print("===== Sell Stock =====\n")
 
-        # Check if all stocks have 0 quantity
+    # Check if all stocks have 0 quantity
     all_zero = True
     for key, val in s_dict.items():
         if val[1] != 0 and key != "CASH":
@@ -179,9 +179,16 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         dict: the updated portfolio of stocks
     """    
     print("===== Change Stock Price =====\n")
+    
+    # Check if all stocks have 0 quantity
+    all_zero = True
+    for key, val in s_dict.items():
+        if val[1] != 0 and key != "CASH":
+            all_zero = False
+            break
 
-    # Check if there are stocks to change
-    if len(s_dict) == 1:
+    # Check if there are stocks to liquidate
+    if len(s_dict) == 1 or all_zero:
         print("\nERROR: No stock assets to change")
         # Return the portfolio as is
         return s_dict
