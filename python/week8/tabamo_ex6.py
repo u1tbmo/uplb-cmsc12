@@ -24,6 +24,12 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
             s_dict[key] = [val[0], val[1], 0]
     return s_dict
 
+def calc_total_value(s_dict: dict[str, list]) -> float:
+    total_value = 0
+    for val in s_dict.values():
+        total_value += val[1]*val[2]
+    return total_value
+
 
 # Main Functions
 
@@ -59,9 +65,9 @@ def viewPortfolio(s_dict: dict[str, list]) -> None:
     print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
     for key, val in s_dict.items():
         print(f"{key:11} {(val[0]):22} {(val[1]):11.2f} {(val[2]):12.2f} {(val[1]*val[2]):11.2f}")
-    total_value = 0
-    for val in s_dict.values():
-        total_value += val[1]*val[2]
+
+    total_value = calc_total_value(s_dict)
+    
     print(f"{' '*54}TOTAL {total_value:11.2f}")
     print("=======================================================================")
 
@@ -90,7 +96,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     # If there is no entry, ask for description of the company
     else:
         print(f"INFO: Initial entry of {s_symb}\n")
-        s_desc = input("Enter Company Name: ")
+        s_desc = input("Enter Company Name: ").strip()
 
     # Ask for quantity and price
     s_quantity = float(input("Enter Number of Shares to Buy: "))
