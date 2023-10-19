@@ -10,7 +10,7 @@ stock_dict = {
 # Helper Functions
 
 def clean_dict(s_dict: dict[str, list]) -> dict:
-    """Removes stocks with 0 quantity from the portfolio except for cash.
+    """Removes the price of stocks with 0 quantity from the portfolio except for cash.
 
     Args:
         s_dict (dict): the portfolio of stocks
