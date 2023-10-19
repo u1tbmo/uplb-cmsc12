@@ -265,10 +265,12 @@ while True:
     # Remove stock prices for stocks with 0 quantity
     stock_dict = clean_dict(stock_dict)
 
-    # Display menu and ask for choice
+    # Display menu and ask for choice to assign to c
     c = menu()
 
     # Check choice
+    # The decision to check for string values instead of ints is to prevent base 10 errors when converting to int
+    # This makes the program more forgiving to user input
     if c == "1":
         viewPortfolio(stock_dict)
     elif c == "2":
@@ -280,7 +282,7 @@ while True:
     elif c == "5":
         stock_dict = sellAll(stock_dict)
     elif c == "6":
-        stock_dict = print("See you next time!")
+        print("See you next time!")
         break
     else:
         print("Invalid choice.")
