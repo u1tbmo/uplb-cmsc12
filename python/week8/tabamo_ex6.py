@@ -64,7 +64,8 @@ def viewPortfolio(s_dict: dict[str, list]) -> None:
     print("Symbol      Description            Quantity    Price        Value      ")
     print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
     for key, val in s_dict.items():
-        print(f"{key:11} {(val[0]):22} {(val[1]):11.2f} {(val[2]):12.2f} {(val[1]*val[2]):11.2f}")
+        if val[1] != 0:
+            print(f"{key:11} {(val[0]):22} {(val[1]):11.2f} {(val[2]):12.2f} {(val[1]*val[2]):11.2f}")
 
     total_value = calc_total_value(s_dict)
     
