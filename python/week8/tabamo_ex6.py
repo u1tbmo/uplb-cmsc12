@@ -7,6 +7,12 @@ stock_dict = {
     "CASH" : ["Cash", 10000.00, 1.00],
 }
 
+# Helper List
+
+history = [
+    ["CASH", "Initial cash", 10000.00, 1.00],
+]
+
 # Helper Functions
 
 def clean_dict(s_dict: dict[str, list]) -> dict:
@@ -24,11 +30,26 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
             s_dict[key] = [val[0], val[1], 0]
     return s_dict
 
+
 def calc_total_value(s_dict: dict[str, list]) -> float:
     total_value = 0
     for val in s_dict.values():
         total_value += val[1]*val[2]
     return total_value
+
+
+def print_history(history: list[list]) -> None:
+    """Prints the history of transactions.
+
+    Args:
+        history (list): the history of transactions
+    """    
+    print("=============================== HISTORY ===============================")
+    print("Symbol      Description            Quantity    Price        Value      ")
+    print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
+    for entry in history:
+        print(f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}")
+    print("=======================================================================")
 
 
 # Main Functions
@@ -47,7 +68,9 @@ def menu() -> str:
         "[3] Sell Stock            \n",
         "[4] Change Stock Price    \n",
         "[5] Liquidate all Stocks  \n",
-        "[6] Exit",
+        "[6] Exit                  \n",
+        "[H]       View History    \n",
+        sep=""
     )
 
     return input("Choice: ")
@@ -100,8 +123,16 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
         s_desc = input("Enter Company Name: ").strip()
 
     # Ask for quantity and price
-    s_quantity = float(input("Enter Number of Shares to Buy: "))
-    s_price = float(input("Enter Current Price per Share: "))
+    while True:
+        s_quantity = float(input("Enter Number of Shares to Buy: "))
+        s_price = float(input("Enter Current Price per Share: "))
+        # Check if quantity and price are positive
+        if s_quantity > 0 and s_price > 0:
+            break
+        elif s_quantity <= 0:
+            print("\nERROR: Quantity must be positive.")
+        elif s_price <= 0:
+            print("\nERROR: Price must be positive.")
 
     # Check if there is enough cash
     if s_dict["CASH"][1] < (s_quantity * s_price):
@@ -109,6 +140,12 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     # If there is enough cash, add the stock to the portfolio
     else:
         print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+
+        # ! Add the transaction to the history
+        # Add bought stock to history
+        history.append([s_symb, f"Bought {s_symb}", s_quantity, s_price])
+        # Subtract the total price from the cash
+        history.append(["CASH", f"Bought {s_symb}", -1 * (s_quantity * s_price), 1.00])
         
         # Subtract the total price from the cash
         s_dict["CASH"][1] = s_dict["CASH"][1] - (s_quantity * s_price)
@@ -162,7 +199,14 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
         print(f"\nERROR: {s_symb} has no shares")
     else:
         # Ask for quantity
-        s_quantity = float(input("Enter Number of Shares to Sell: "))
+        while True:
+            s_quantity = float(input("Enter Number of Shares to Sell: "))
+            # Check if quantity is positive
+            if s_quantity > 0:
+                break
+            else:
+                print("\nERROR: Quantity must be positive.")
+
         # If there is not enough shares, you cannot sell
         if s_quantity > s_dict[s_symb][1]:
             print(f"\nERROR: Not enough shares")
@@ -170,6 +214,12 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
             # Ask for price
             s_price = float(input("Enter Current Price per Share: "))
             print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+
+            # ! Add the transaction to the history
+            # Subtract sold stock from history
+            history.append([s_symb, f"Sold {s_symb}", -1 * s_quantity, s_price])
+            # Add the total price to the cash
+            history.append(["CASH", f"Sold {s_symb}", s_quantity * s_price, 1.00])
 
             # Add the total price to the cash and update the stock details
             s_dict["CASH"][1] += s_quantity * s_price
@@ -220,6 +270,10 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         s_price = float(input("Enter New Price per Share: "))
         print(f"\nINFO: {s_symb} price changed to {s_price:.2f}")
 
+        # ! Add the transaction to the history
+        # Add the new price to the history
+        history.append([s_symb, f"Changed price of {s_symb}", s_dict[s_symb][1], s_price])
+
         # Update the stock details
         s_dict[s_symb] = [s_dict[s_symb][0], s_dict[s_symb][1], s_price]
 
@@ -257,8 +311,15 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     if confirmation == "Y":
         # for every key, val tuple in the portfolio that is not cash
         for key, val in s_dict.items():
-            if key != "CASH":
+            if key != "CASH" and val[1] != 0:
                 print(f"INFO: Sold {val[1]} shares of {key} for total of {val[1] * val[2]:.2f}")
+
+                # ! Add the transaction to the history
+                # Add sold stock to history
+                history.append([key, f"Sold {key}", -1 * val[1], val[2]])
+                # Add the total price to the cash
+                history.append(["CASH", f"Sold {key}", val[1] * val[2], 1.00])
+
                 # Add the total price to the cash and update the stock details
                 s_dict["CASH"][1] += val[1] * val[2]
                 s_dict[key] = [val[0], 0, val[2]]
@@ -295,5 +356,8 @@ while True:
     elif c == "6":
         print("See you next time!")
         break
+    # Just a helper function to see the history of transactions
+    elif c == "H":
+        print_history(history)
     else:
         print("Invalid choice.")
