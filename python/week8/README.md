@@ -72,12 +72,15 @@ def print_history(history: list[list]) -> None:
     for entry in history:
         print(f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}")
     print("=======================================================================")
-
 ```
 
 - For every entry in the history, print the stock symbol, description, quantity, price, and value with formatting.
 
+> NOTE: While this function is not necessary, it is useful for debugging purposes.
+
 ## Main Functions
+
+NOTE: In the following functions, history is being updated globally without being passed as a parameter and being returned. If we want to remove the history functionality, we must comment out ALL lines that have `# ! Add the transaction to the history`, the option in the main program, and the `print_history()` function or else the program will crash.
 
 ### Menu
 
