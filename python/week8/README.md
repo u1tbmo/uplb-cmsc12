@@ -344,3 +344,35 @@ What happens to stocks with zero quantity?
 ```
 
 - Return the updated portfolio.
+
+## Main Program
+
+```python
+while True:
+    stock_dict = clean_dict(stock_dict)
+    c = menu()
+    if c == "1":
+        viewPortfolio(stock_dict)
+    elif c == "2":
+        stock_dict = buyStock(stock_dict)
+    elif c == "3":
+        stock_dict = sellStock(stock_dict)
+    elif c == "4":
+        stock_dict = changePrice(stock_dict)
+    elif c == "5":
+        stock_dict = sellAll(stock_dict)
+    elif c == "6":
+        print("See you next time!")
+        break
+    elif c.upper() == "H":
+        print_history(history)
+    else:
+        print("Invalid choice.")
+```
+
+1. Clean the dictionary of stocks.
+2. Ask the user for a choice by calling the `menu()` function.
+3. Proceed to the corresponding function depending on the choice.
+4. If the choice is `6`, print a message and break out of the infinite loop.
+5. If the choice is `H`, print the history.
+6. If the choice is not valid, print an error message.
