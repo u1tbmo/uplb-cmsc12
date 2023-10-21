@@ -69,7 +69,7 @@ def menu() -> str:
         "[4] Change Stock Price    \n",
         "[5] Liquidate all Stocks  \n",
         "[6] Exit                  \n",
-        "[H]       View History    \n",
+        "[H] View History          \n",
         sep=""
     )
 
@@ -114,7 +114,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     new_entry = True
     # If there is an entry, get the description of the company
     if s_symb in s_dict:
-        print(f"INFO: Adding more shares of {s_symb}\n")
+        print(f"INFO: Adding shares of {s_symb}\n")
         s_desc = s_dict[s_symb][0]
         new_entry = False
     # If there is no entry, ask for description of the company
@@ -180,7 +180,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
             break
 
     # Check if there are stocks to liquidate
-    if len(s_dict) == 1 or all_zero:
+    if all_zero:
         print("\nERROR: No stock assets to sell")
         # Return the portfolio as is
         return s_dict
@@ -248,7 +248,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
             break
 
     # Check if there are stocks to liquidate
-    if len(s_dict) == 1 or all_zero:
+    if all_zero:
         print("\nERROR: No stock assets to change")
         # Return the portfolio as is
         return s_dict
