@@ -16,7 +16,7 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
         s_dict (dict): the portfolio of stocks
 
     Returns:
-        dict: the updated portfolio of stocks
+        dict: the updated portfolio of stocks where the price of stocks with 0 quantity is removed
     """    
     for key, val in s_dict.items():
         if val[1] == 0 and key != "CASH":
@@ -37,7 +37,7 @@ def menu() -> str:
     """Prints a menu and asks the user for a choice.
 
     Returns:
-        int: the choice of the user
+        str: the choice of the user
     """    
     print(
         "                          \n"
@@ -79,7 +79,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
         s_dict (dict): the portfolio of stocks
 
     Returns:
-        dict: the updated portfolio of stocks
+        dict: the updated portfolio of stocks where cash is subtracted and a new stock is added
     """    
     print("===== Buy Stock =====\n")
 
@@ -130,7 +130,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
         s_dict (dict): the portfolio of stocks
 
     Returns:
-        dict: the updated portfolio of stocks
+        dict: the updated portfolio of stocks where cash is added, stock quantity is subtracted, and stock price is updated
     """    
     print("===== Sell Stock =====\n")
 
@@ -185,7 +185,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         s_dict (dict): the portfolio of stocks
 
     Returns:
-        dict: the updated portfolio of stocks
+        dict: the updated portfolio of stocks where the price of a stock is updated
     """    
     print("===== Change Stock Price =====\n")
     
@@ -233,7 +233,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
         s_dict (dict): the portfolio of stocks
 
     Returns:
-        dict: the updated portfolio of stocks
+        dict: the updated portfolio of stocks where cash is added and all stock quantities are set to 0
     """    
     print("===== Liquidate All Stocks =====\n")
     
@@ -281,6 +281,7 @@ while True:
     # The decision to check for string values instead of ints is to prevent base 10 errors when converting to int
     # This makes the program more forgiving to user input
     if c == "1":
+        # viewPortfolio() returns None, so we do not need to assign it to a variable
         viewPortfolio(stock_dict)
     elif c == "2":
         stock_dict = buyStock(stock_dict)
