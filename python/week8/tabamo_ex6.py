@@ -218,7 +218,14 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
             print(f"\nERROR: Not enough shares")
         else:
             # Ask for price
-            s_price = float(input("Enter Current Price per Share: "))
+            while True:
+                s_price = float(input("Enter Current Price per Share: "))
+                # Check if price is positive
+                if s_price > 0:
+                    break
+                else:
+                    print("\nERROR: Price must be positive.")
+            
             print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
 
             # ! Add the transaction to the history
@@ -269,7 +276,14 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         print(f"ERROR: {s_symb} has no shares")
     else:
         # Ask for price
-        s_price = float(input("Enter New Price per Share: "))
+        while True:
+            s_price = float(input("Enter New Price per Share: "))
+            # Check if price is positive
+            if s_price > 0:
+                break
+            else:
+                print("\nERROR: Price must be positive.")
+                
         print(f"\nINFO: {s_symb} price changed to {s_price:.2f}")
 
         # ! Add the transaction to the history
