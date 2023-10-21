@@ -108,12 +108,15 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     # If there is enough cash, add the stock to the portfolio
     else:
         print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
-        # If this is not a new entry, add the previous quantity to the new quantity
+        
+        # Subtract the total price from the cash
+        s_dict["CASH"][1] = s_dict["CASH"][1] - (s_quantity * s_price)
+
+        # If this is not a new entry, add the previous quantity to the new quantity before updating the dictionary
         if not new_entry:
             s_quantity += s_dict[s_symb][1]
-        
-        # Subtract the total price from the cash and update the stock details
-        s_dict["CASH"][1] = s_dict["CASH"][1] - (s_quantity * s_price)
+
+        # Update the stock details
         s_dict[s_symb] = [s_desc, s_quantity, s_price]
 
     # Return the updated portfolio
