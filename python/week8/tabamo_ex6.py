@@ -357,7 +357,7 @@ while True:
         print("See you next time!")
         break
     # Just a helper function to see the history of transactions
-    elif c == "H":
+    elif c.upper() == "H":
         print_history(history)
     else:
         print("Invalid choice.")
