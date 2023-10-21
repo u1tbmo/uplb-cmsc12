@@ -62,7 +62,45 @@ def check_for_stocks(s_dict: dict[str, list]) -> bool:
 3. If there exists at least one stock with a quantity greater than zero, set `all_zero` to `False` and break out of the loop.
 4. Return the flag.
 
+### Print History
+
+```python
+def print_history(history: list[list]) -> None:
+    print("=============================== HISTORY ===============================")
+    print("Symbol      Description            Quantity    Price        Value      ")
+    print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
+    for entry in history:
+        print(f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}")
+    print("=======================================================================")
+
+```
+
+- For every entry in the history, print the stock symbol, description, quantity, price, and value with formatting.
+
 ## Main Functions
+
+### Menu
+
+```python
+def menu() -> str:
+    print(
+        "                          \n"
+        "========== Menu ==========\n",
+        "[1] View Portfolio        \n",
+        "[2] Buy Stock             \n",
+        "[3] Sell Stock            \n",
+        "[4] Change Stock Price    \n",
+        "[5] Liquidate all Stocks  \n",
+        "[6] Exit                  \n",
+        "[H] View History          \n",
+        sep=""
+    )
+
+    return input("Choice: ")
+```
+
+1. Print the menu.
+2. Return the user's choice.
 
 ### View Portfolio
 
