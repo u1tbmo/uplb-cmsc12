@@ -38,6 +38,16 @@ def calc_total_value(s_dict: dict[str, list]) -> float:
     return total_value
 
 
+def check_for_stocks(s_dict: dict[str, list]) -> bool:
+    # Check if all stocks have 0 quantity
+    all_zero = True
+    for key, val in s_dict.items():
+        if val[1] != 0 and key != "CASH":
+            all_zero = False
+            break
+    return all_zero
+
+
 def print_history(history: list[list]) -> None:
     """Prints the history of transactions.
 
@@ -173,11 +183,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Sell Stock =====\n")
 
     # Check if all stocks have 0 quantity
-    all_zero = True
-    for key, val in s_dict.items():
-        if val[1] != 0 and key != "CASH":
-            all_zero = False
-            break
+    all_zero = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
     if all_zero:
@@ -241,11 +247,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Change Stock Price =====\n")
     
     # Check if all stocks have 0 quantity
-    all_zero = True
-    for key, val in s_dict.items():
-        if val[1] != 0 and key != "CASH":
-            all_zero = False
-            break
+    all_zero = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
     if all_zero:
@@ -293,11 +295,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Liquidate All Stocks =====\n")
     
     # Check if all stocks have 0 quantity
-    all_zero = True
-    for key, val in s_dict.items():
-        if val[1] != 0 and key != "CASH":
-            all_zero = False
-            break
+    all_zero = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
     if all_zero:
