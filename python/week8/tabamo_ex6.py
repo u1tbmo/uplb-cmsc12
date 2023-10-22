@@ -56,12 +56,12 @@ def check_for_stocks(s_dict: dict[str, list]) -> bool:
         bool: True if all stocks (except cash) have 0 quantity, otherwise returns False
     """    
     # Check if all stocks have 0 quantity
-    all_zero = True
+    no_stocks_exist = True
     for key, val in s_dict.items():
         if val[1] != 0 and key != "CASH":
-            all_zero = False
+            no_stocks_exist = False
             break
-    return all_zero
+    return no_stocks_exist
 
 
 def print_history(history: list[list]) -> None:
@@ -203,10 +203,10 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Sell Stock =====\n")
 
     # Check if all stocks have 0 quantity
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
-    if all_zero:
+    if no_stocks_exist:
         print("\nERROR: No stock assets to sell")
         # Return the portfolio as is
         return s_dict
@@ -274,10 +274,10 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Change Stock Price =====\n")
     
     # Check if all stocks have 0 quantity
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
-    if all_zero:
+    if no_stocks_exist:
         print("\nERROR: No stock assets to change")
         # Return the portfolio as is
         return s_dict
@@ -329,10 +329,10 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     print("===== Liquidate All Stocks =====\n")
     
     # Check if all stocks have 0 quantity
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 
     # Check if there are stocks to liquidate
-    if all_zero:
+    if no_stocks_exist:
         print("ERROR: No stock assets to liquidate")
         # Return the portfolio as is
         return s_dict
