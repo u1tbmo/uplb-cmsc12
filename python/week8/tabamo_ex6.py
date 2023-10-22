@@ -137,19 +137,19 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     # You cannot buy cash
     if s_symb == "CASH":
-        print("ERROR: You cannot buy cash.")
+        print("\nERROR: You cannot buy cash.")
         return s_dict
 
     # Check if stock symbol is in portfolio
     new_entry = True
     # If there is an entry, get the description of the company
     if s_symb in s_dict:
-        print(f"INFO: Adding shares of {s_symb}\n")
+        print(f"\nINFO: Adding shares of {s_symb}\n")
         s_desc = s_dict[s_symb][0]
         new_entry = False
     # If there is no entry, ask for description of the company
     else:
-        print(f"INFO: Initial entry of {s_symb}\n")
+        print(f"\nINFO: Initial entry of {s_symb}\n")
         s_desc = input("Enter Company Name: ").strip()
 
     # Ask for quantity and price
@@ -293,7 +293,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         print(f"\nERROR: {s_symb} not in portfolio")
     # Check if there are shares for the stock
     elif s_dict[s_symb][1] == 0:
-        print(f"ERROR: {s_symb} has no shares")
+        print(f"\nERROR: {s_symb} has no shares")
     else:
         # Ask for price
         while True:
@@ -333,13 +333,14 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
     # Check if there are stocks to liquidate
     if no_stocks_exist:
-        print("ERROR: No stock assets to liquidate")
+        print("\nERROR: No stock assets to liquidate")
         # Return the portfolio as is
         return s_dict
 
 
     # Ask for confirmation
     confirmation = input("Are you sure you want to sell all your stocks? [Y] to confirm.\n > ")
+    print()
     if confirmation == "Y":
         # for every key, val tuple in the portfolio that is not cash
         for key, val in s_dict.items():
