@@ -120,6 +120,11 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     # Ask for stock symbol
     s_symb = input("Enter Stock Symbol: ").upper().strip()
 
+    # You cannot buy cash
+    if s_symb == "CASH":
+        print("ERROR: You cannot buy cash.")
+        return s_dict
+
     # Check if stock symbol is in portfolio
     new_entry = True
     # If there is an entry, get the description of the company
