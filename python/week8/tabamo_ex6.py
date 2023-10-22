@@ -130,7 +130,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks where cash is subtracted and a new stock is added
     """    
-    print("===== Buy Stock =====\n")
+    print("\n===== Buy Stock =====")
 
     # Ask for stock symbol
     s_symb = input("Enter Stock Symbol: ").upper().strip()
@@ -200,7 +200,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks where cash is added, stock quantity is subtracted, and stock price is updated
     """    
-    print("===== Sell Stock =====\n")
+    print("\n===== Sell Stock =====")
 
     # Check if all stocks have 0 quantity
     no_stocks_exist = check_for_stocks(s_dict)
@@ -271,7 +271,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks where the price of a stock is updated
     """    
-    print("===== Change Stock Price =====\n")
+    print("\n===== Change Stock Price =====")
     
     # Check if all stocks have 0 quantity
     no_stocks_exist = check_for_stocks(s_dict)
@@ -326,7 +326,7 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
     Returns:
         dict: the updated portfolio of stocks where cash is added and all stock quantities are set to 0
     """    
-    print("===== Liquidate All Stocks =====\n")
+    print("\n===== Liquidate All Stocks =====")
     
     # Check if all stocks have 0 quantity
     no_stocks_exist = check_for_stocks(s_dict)
