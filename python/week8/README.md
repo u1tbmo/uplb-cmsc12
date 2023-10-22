@@ -125,7 +125,12 @@ What happens to stocks with zero quantity?
 ### Buy Stock
 
 ```python
+    # Ask for stock symbol
     s_symb = input("Enter Stock Symbol: ").upper().strip()
+
+    if s_symb == "CASH":
+        print("ERROR: You cannot buy cash.")
+        return s_dict
 
     new_entry = True
     if s_symb in s_dict:
@@ -139,8 +144,9 @@ What happens to stocks with zero quantity?
 
 1. Ask the user for the stock symbol.
 2. Convert the input to uppercase and remove leading and trailing spaces.
-3. Create a flag `new_entry` and set it to `True`.
-4. Check if the stock symbol is in the dictionary.
+3. If the stock symbol is "CASH" print an error message and return the dictionary as is.
+4. Create a flag `new_entry` and set it to `True`.
+5. Check if the stock symbol is in the dictionary.
    - If it is, set `new_entry` to `False` then get the description of the stock from the dictionary.
    - If it is not, ask for the company name to be added to the dictionary.
 
