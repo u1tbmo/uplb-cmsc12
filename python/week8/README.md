@@ -95,8 +95,7 @@ def menu() -> str:
         "[4] Change Stock Price    \n",
         "[5] Liquidate all Stocks  \n",
         "[6] Exit                  \n",
-        "[H] View History          \n",
-        sep=""
+        sep="", end=""
     )
 
     return input("Choice: ")
