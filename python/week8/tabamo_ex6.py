@@ -32,6 +32,14 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
 
 
 def calc_total_value(s_dict: dict[str, list]) -> float:
+    """Calculates the total value of the portfolio.
+
+    Args:
+        s_dict (dict): the portfolio of stocks
+
+    Returns:
+        float: the total value of the portfolio
+    """    
     total_value = 0
     for val in s_dict.values():
         total_value += val[1]*val[2]
@@ -39,6 +47,14 @@ def calc_total_value(s_dict: dict[str, list]) -> float:
 
 
 def check_for_stocks(s_dict: dict[str, list]) -> bool:
+    """Checks for at least 1 stock with a quantity greater than 0.
+
+    Args:
+        s_dict (dict): the portfolio of stocks
+
+    Returns:
+        bool: True if all stocks (except cash) have 0 quantity, otherwise returns False
+    """    
     # Check if all stocks have 0 quantity
     all_zero = True
     for key, val in s_dict.items():
