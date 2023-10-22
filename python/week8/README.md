@@ -49,17 +49,17 @@ def calc_total_value(s_dict: dict[str, list]) -> float:
 
 ```python
 def check_for_stocks(s_dict: dict[str, list]) -> bool:
-    all_zero = True
+    no_stocks_exist = True
     for key, val in s_dict.items():
         if val[1] != 0 and key != "CASH":
-            all_zero = False
+            no_stocks_exist = False
             break
-    return all_zero
+    return no_stocks_exist
 ```
 
-1. Create a flag `all_zero` and set it to `True`.
+1. Create a flag `no_stocks_exist` and set it to `True`.
 2. Iterate through the dictionary of stocks.
-3. If there exists at least one stock with a quantity greater than zero, set `all_zero` to `False` and break out of the loop.
+3. If there exists at least one stock with a quantity greater than zero, set `no_stocks_exist` to `False` and break out of the loop.
 4. Return the flag.
 
 ### Print History
@@ -205,13 +205,13 @@ What happens to stocks with zero quantity?
 ### Sell Stock
 
 ```python
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 ```
 
 - Check if there are stocks in the portfolio.
 
 ```python
-    if all_zero:
+    if no_stocks_exist:
         print("\nERROR: No stock assets to sell")
         return s_dict
 ```
@@ -283,13 +283,13 @@ What happens to stocks with zero quantity?
 ### Change Price
 
 ```python
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 ```
 
 - Check if there are stocks in the portfolio.
 
 ```python
-    if all_zero:
+    if no_stocks_exist:
         print("\nERROR: No stock assets to change")
         return s_dict
 ```
@@ -342,13 +342,13 @@ What happens to stocks with zero quantity?
 ### Sell All Stocks
 
 ```python
-    all_zero = check_for_stocks(s_dict)
+    no_stocks_exist = check_for_stocks(s_dict)
 ```
 
 - Check if there are stocks in the portfolio.
 
 ```python
-    if all_zero:
+    if no_stocks_exist:
         print("ERROR: No stock assets to liquidate")
         return s_dict
 ```
