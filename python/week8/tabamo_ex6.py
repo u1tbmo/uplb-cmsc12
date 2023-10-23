@@ -1,6 +1,7 @@
 """
 This program is a stock portfolio tracking system.
 """
+# Exercise 6 - Tabamo, Euan Jed S. - October 23, 2023
 
 # Global Variable
 stock_dict = {
