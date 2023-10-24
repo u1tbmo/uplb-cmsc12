@@ -101,7 +101,7 @@ def menu() -> str:
         "[5] Liquidate all Stocks  \n",
         "[6] Load Portfolio        \n",
         "[7] Save Portfolio        \n",
-        "[8] Exit                  \n",
+        "[0] Exit                  \n",
         sep="", end=""
     )
 
@@ -403,7 +403,7 @@ def program(s_dict, hist) -> None:
             t_files.savePortfolio(s_dict)
             # ! History functionality
             t_files.saveHistory(hist)
-        elif c == "8":
+        elif c == "0":
             print("See you next time!")
             break
         # Just a helper function to see the history of transactions
