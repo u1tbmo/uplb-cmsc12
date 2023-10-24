@@ -43,7 +43,7 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
         if key == "CASH":
             f_h.write(f"{key},{value[1]}\n")
         else:
-            f_h.write(f"{key},{value[0]},{value[1]},{value[2]}")
+            f_h.write(f"{key},{value[0]},{value[1]},{value[2]}\n")
     f_h.close()
 
     print("\nINFO: Successfully saved portfolio!")
