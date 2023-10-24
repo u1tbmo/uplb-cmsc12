@@ -1,0 +1,5 @@
+CASH,Initial cash,10000.0,1.0
+JFC,Bought JFC,10.0,225.0
+CASH,Bought JFC,-2250.0,1.0
+JFC,Sold JFC,-8.0,225.0
+CASH,Sold JFC,1800.0,1.0
