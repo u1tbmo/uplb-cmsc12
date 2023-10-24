@@ -20,6 +20,8 @@ def loadPortfolio(s_dict: dict[str, list]) -> dict:
     Args:
         s_dict (dict[str, list]): the portfolio
     """
+    print("\n===== Load Portfolio =====")
+
     # Checks if the file exists
     if os.path.isfile(inv_path) is False:
         print("\nERROR: inventory.dat file not found!")
@@ -45,6 +47,8 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
     Args:
         s_dict (dict[str, list]): the portfolio
     """
+    print("\n===== Save Portfolio =====")
+
     f_h = open(inv_path, "w", encoding="utf-8")
     for key, value in s_dict.items():
         if key == "CASH":
