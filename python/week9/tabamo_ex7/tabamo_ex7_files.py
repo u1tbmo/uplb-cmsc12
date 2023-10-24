@@ -26,9 +26,11 @@ def loadPortfolio(s_dict: dict[str, list]) -> dict:
     if os.path.isfile(inv_path) is False:
         print("\nERROR: inventory.dat file not found!")
         return s_dict
-
+    # Clear the s_dict
     s_dict.clear()
+    # Create a file handle
     f_h = open(inv_path, "r", encoding="utf-8")
+    # For every line in the file, split into a list of values
     for line in f_h:
         data = line.split(",")
         # Cash
@@ -48,11 +50,14 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
         s_dict (dict[str, list]): the portfolio
     """
     print("\n===== Save Portfolio =====")
-
+    # Create a file handle
     f_h = open(inv_path, "w", encoding="utf-8")
+    # For every key value pair in the dictionary
     for key, value in s_dict.items():
+        # If the key is cash, write in its own format
         if key == "CASH":
             f_h.write(f"{key},{value[1]}\n")
+        # Write stocks
         else:
             f_h.write(f"{key},{value[0]},{value[1]},{value[2]}\n")
     f_h.close()

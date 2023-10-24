@@ -3,6 +3,7 @@ This program is a stock portfolio tracking system.
 """
 # Exercise 7 - Tabamo, Euan Jed S. - October 24, 2023
 
+# Import the files module
 import tabamo_ex7_files as t_files
 
 # Global Variable
@@ -395,6 +396,7 @@ def program(s_dict, hist) -> None:
             s_dict = changePrice(s_dict)
         elif c == "5":
             s_dict = sellAll(s_dict)
+        # Use functions from module tabamo_ex7_files.py
         elif c == "6":
             s_dict = t_files.loadPortfolio(s_dict)
             # ! History functionality
