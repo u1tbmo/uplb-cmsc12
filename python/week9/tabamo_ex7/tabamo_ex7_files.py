@@ -10,7 +10,7 @@ file_dir = os.path.dirname(__file__)
 inv_path = os.path.join(file_dir, "inventory.dat")
 hist_path = os.path.join(file_dir, "history.dat")
 
-# History is being accessed globally.
+# NOTE: encoding="utf-8" in accordance with PEP 597 https://peps.python.org/pep-0597/
 
 def loadPortfolio(s_dict: dict[str, list]) -> dict:
     """Loads the portfolio from a file.
@@ -18,6 +18,11 @@ def loadPortfolio(s_dict: dict[str, list]) -> dict:
     Args:
         s_dict (dict[str, list]): the portfolio
     """
+    # Checks if the file exists
+    if os.path.isfile(inv_path) is False:
+        print("\nERROR: inventory.dat file not found!")
+        return s_dict
+
     s_dict.clear()
     f_h = open(inv_path, "r", encoding="utf-8")
     for line in f_h:
@@ -52,6 +57,10 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
 # Just for fun functions to also load and save history
 
 def loadHistory(history: list) -> list:
+    # Checks if the file exists
+    if os.path.isfile(hist_path) is False:
+        return history
+    
     history.clear()
     f_h = open(hist_path, "r", encoding="utf-8")
     for line in f_h:

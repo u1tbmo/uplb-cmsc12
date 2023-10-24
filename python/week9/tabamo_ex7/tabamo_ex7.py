@@ -67,7 +67,7 @@ def check_for_stocks(s_dict: dict[str, list]) -> bool:
     return no_stocks_exist
 
 
-def print_history(history: list[list]) -> None:
+def print_history(hist: list[list]) -> None:
     """Prints the history of transactions.
 
     Args:
@@ -76,7 +76,7 @@ def print_history(history: list[list]) -> None:
     print("=============================== HISTORY ===============================")
     print("Symbol      Description            Quantity    Price        Value      ")
     print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
-    for entry in history:
+    for entry in hist:
         print(
             f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}"
             )
