@@ -5,7 +5,9 @@ Module for saving and loading the stock portfolio.
 
 import os
 
-# Ensures that the file is saved to the same directory as the python file
+# NOTE:
+# Ensures that the file is saved to the same directory as the Python file.
+# This is so that the file wouldn't be saved wherever the Python Interpreter was run.
 file_dir = os.path.dirname(__file__)
 inv_path = os.path.join(file_dir, "inventory.dat")
 hist_path = os.path.join(file_dir, "history.dat")
@@ -54,7 +56,7 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
     print("\nINFO: Successfully saved portfolio!")
 
 
-# Just for fun functions to also load and save history
+# Additional functions to also load and save history
 
 def loadHistory(history: list) -> list:
     # Checks if the file exists
