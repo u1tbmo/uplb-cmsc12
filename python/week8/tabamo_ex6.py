@@ -92,7 +92,8 @@ def menu() -> str:
         str: the choice of the user
     """
     print(
-        "                          \n" "========== Menu ==========\n",
+        "                          \n",
+        "========== Menu ==========\n",
         "[1] View Portfolio        \n",
         "[2] Buy Stock             \n",
         "[3] Sell Stock            \n",
