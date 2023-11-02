@@ -5,7 +5,7 @@ This program is a stock portfolio tracking system.
 
 # Global Variable
 stock_dict = {
-    "CASH" : ["Cash", 10000.00, 1.00],
+    "CASH": ["Cash", 10000.00, 1.00],
 }
 
 # Helper List
@@ -16,6 +16,7 @@ history = [
 
 # Helper Functions
 
+
 def clean_dict(s_dict: dict[str, list]) -> dict:
     """Removes the price of stocks with 0 quantity from the portfolio except for cash.
 
@@ -24,7 +25,7 @@ def clean_dict(s_dict: dict[str, list]) -> dict:
 
     Returns:
         dict: the updated portfolio of stocks where the price of stocks with 0 quantity is removed
-    """    
+    """
     for key, val in s_dict.items():
         if val[1] == 0 and key != "CASH":
             # Remove price if quantity is 0
@@ -40,10 +41,10 @@ def calc_total_value(s_dict: dict[str, list]) -> float:
 
     Returns:
         float: the total value of the portfolio
-    """    
+    """
     total_value = 0
     for val in s_dict.values():
-        total_value += val[1]*val[2]
+        total_value += val[1] * val[2]
     return total_value
 
 
@@ -55,7 +56,7 @@ def check_for_stocks(s_dict: dict[str, list]) -> bool:
 
     Returns:
         bool: True if all stocks (except cash) have 0 quantity, otherwise returns False
-    """    
+    """
     # Check if all stocks have 0 quantity
     no_stocks_exist = True
     for key, val in s_dict.items():
@@ -70,33 +71,36 @@ def print_history(history: list[list]) -> None:
 
     Args:
         history (list): the history of transactions
-    """    
+    """
     print("=============================== HISTORY ===============================")
     print("Symbol      Description            Quantity    Price        Value      ")
     print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
     for entry in history:
-        print(f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}")
+        print(
+            f"{entry[0]:11} {entry[1]:22} {entry[2]:11.2f} {entry[3]:12.2f} {(entry[2]*entry[3]):11.2f}"
+        )
     print("=======================================================================")
 
 
 # Main Functions
+
 
 def menu() -> str:
     """Prints a menu and asks the user for a choice.
 
     Returns:
         str: the choice of the user
-    """    
+    """
     print(
-        "                          \n"
-        "========== Menu ==========\n",
+        "                          \n" "========== Menu ==========\n",
         "[1] View Portfolio        \n",
         "[2] Buy Stock             \n",
         "[3] Sell Stock            \n",
         "[4] Change Stock Price    \n",
         "[5] Liquidate all Stocks  \n",
         "[6] Exit                  \n",
-        sep="", end=""
+        sep="",
+        end="",
     )
 
     return input("Choice: ")
@@ -114,10 +118,12 @@ def viewPortfolio(s_dict: dict[str, list]) -> None:
     print("::::::::::: :::::::::::::::::::::: ::::::::::: :::::::::::: :::::::::::")
     for key, val in s_dict.items():
         if val[1] != 0:
-            print(f"{key:11} {(val[0]):22} {(val[1]):11.2f} {(val[2]):12.2f} {(val[1]*val[2]):11.2f}")
+            print(
+                f"{key:11} {(val[0]):22} {(val[1]):11.2f} {(val[2]):12.2f} {(val[1]*val[2]):11.2f}"
+            )
 
     total_value = calc_total_value(s_dict)
-    
+
     print(f"{' '*54}TOTAL {total_value:11.2f}")
     print("=======================================================================")
 
@@ -130,7 +136,7 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     Returns:
         dict: the updated portfolio of stocks where cash is subtracted and a new stock is added
-    """    
+    """
     print("\n===== Buy Stock =====")
 
     # Ask for stock symbol
@@ -170,14 +176,16 @@ def buyStock(s_dict: dict[str, list]) -> dict[str, list]:
         print(f"\nERROR: Not enough cash.")
     # If there is enough cash, add the stock to the portfolio
     else:
-        print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+        print(
+            f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}"
+        )
 
         # ! Add the transaction to the history
         # Add bought stock to history
         history.append([s_symb, f"Bought {s_symb}", s_quantity, s_price])
         # Subtract the total price from the cash
         history.append(["CASH", f"Bought {s_symb}", -1 * (s_quantity * s_price), 1.00])
-        
+
         # Subtract the total price from the cash
         s_dict["CASH"][1] = s_dict["CASH"][1] - (s_quantity * s_price)
 
@@ -200,7 +208,7 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
 
     Returns:
         dict: the updated portfolio of stocks where cash is added, stock quantity is subtracted, and stock price is updated
-    """    
+    """
     print("\n===== Sell Stock =====")
 
     # Check if all stocks have 0 quantity
@@ -246,8 +254,10 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
                     break
                 else:
                     print("\nERROR: Price must be positive.")
-            
-            print(f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}")
+
+            print(
+                f"\nINFO: {s_quantity} shares of {s_symb} sold for total of {s_price * s_quantity:.2f}"
+            )
 
             # ! Add the transaction to the history
             # Subtract sold stock from history
@@ -257,8 +267,12 @@ def sellStock(s_dict: dict[str, list]) -> dict[str, list]:
 
             # Add the total price to the cash and update the stock details
             s_dict["CASH"][1] += s_quantity * s_price
-            s_dict[s_symb] = [s_dict[s_symb][0], s_dict[s_symb][1] - s_quantity, s_price]
-    
+            s_dict[s_symb] = [
+                s_dict[s_symb][0],
+                s_dict[s_symb][1] - s_quantity,
+                s_price,
+            ]
+
     # Return the updated portfolio
     return s_dict
 
@@ -271,9 +285,9 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
 
     Returns:
         dict: the updated portfolio of stocks where the price of a stock is updated
-    """    
+    """
     print("\n===== Change Stock Price =====")
-    
+
     # Check if all stocks have 0 quantity
     no_stocks_exist = check_for_stocks(s_dict)
 
@@ -282,7 +296,7 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
         print("\nERROR: No stock assets to change")
         # Return the portfolio as is
         return s_dict
-    
+
     # Ask for stock symbol
     s_symb = input("Enter Stock Symbol: ").upper().strip()
 
@@ -304,12 +318,14 @@ def changePrice(s_dict: dict[str, list]) -> dict[str, list]:
                 break
             else:
                 print("\nERROR: Price must be positive.")
-                
+
         print(f"\nINFO: {s_symb} price changed to {s_price:.2f}")
 
         # ! Add the transaction to the history
         # Add the new price to the history
-        history.append([s_symb, f"Changed price of {s_symb}", s_dict[s_symb][1], s_price])
+        history.append(
+            [s_symb, f"Changed price of {s_symb}", s_dict[s_symb][1], s_price]
+        )
 
         # Update the stock details
         s_dict[s_symb] = [s_dict[s_symb][0], s_dict[s_symb][1], s_price]
@@ -326,9 +342,9 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
     Returns:
         dict: the updated portfolio of stocks where cash is added and all stock quantities are set to 0
-    """    
+    """
     print("\n===== Liquidate All Stocks =====")
-    
+
     # Check if all stocks have 0 quantity
     no_stocks_exist = check_for_stocks(s_dict)
 
@@ -338,15 +354,18 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
         # Return the portfolio as is
         return s_dict
 
-
     # Ask for confirmation
-    confirmation = input("Are you sure you want to sell all your stocks? [Y] to confirm.\n > ")
+    confirmation = input(
+        "Are you sure you want to sell all your stocks? [Y] to confirm.\n > "
+    )
     print()
     if confirmation == "Y":
         # for every key, val tuple in the portfolio that is not cash
         for key, val in s_dict.items():
             if key != "CASH" and val[1] != 0:
-                print(f"INFO: Sold {val[1]} shares of {key} for total of {val[1] * val[2]:.2f}")
+                print(
+                    f"INFO: Sold {val[1]} shares of {key} for total of {val[1] * val[2]:.2f}"
+                )
 
                 # ! Add the transaction to the history
                 # Add sold stock to history
@@ -360,10 +379,13 @@ def sellAll(s_dict: dict[str, list]) -> dict[str, list]:
 
         print("\nINFO: All stocks have been liquidated.")
     else:
-        print(f"\nINFO: '{confirmation}' does not match 'Y'. Cannot confirm liquidation.")
+        print(
+            f"\nINFO: '{confirmation}' does not match 'Y'. Cannot confirm liquidation."
+        )
 
     # Return the updated portfolio
     return s_dict
+
 
 # Main Program Loop
 while True:
