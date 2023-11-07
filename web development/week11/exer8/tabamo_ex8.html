@@ -14,7 +14,7 @@
                 <input type="text" name="name" id="name" required>
             </label><br>
             <label for="mobileNumber">
-                Mobile Number: <input type="number" placeholder="09XXXXXXXXX" name="mobileNumber" id="mobileNumber" required>
+                Mobile Number: <input type="tel" pattern="[0]{1}[9]{1}[0-9]{9}" title="09XXXXXXXXX" placeholder="09XXXXXXXXX" name="mobileNumber" id="mobileNumber" required>
             </label><br>
             <label for="emailAddress">
                 Email Address: <input type="email" name="emailAddress" id="emailAddress" required>
@@ -27,7 +27,7 @@
             </label><br>
             <label for="appetizer">
                 Appetizer<br>
-                <label for="salad"><input type="radio" name="appetizer" id="salad" required>Salad</label><br>
+                <label for="salad"><input type="radio" name="appetizer" id="salad" checked required>Salad</label><br>
                 <label for="breadWithDip"><input type="radio" name="appetizer" id="breadWithDip" required>Bread w/ Dip</label><br>
                 <label for="tomatoSurprise"><input type="radio" name="appetizer" id="tomatoSurprise" required>Tomato Surprise</label><br>
                 <label for="mushroomBites"><input type="radio" name="appetizer" id="mushroomBites" required>Mushroom Bites</label><br>
@@ -54,21 +54,21 @@
             </label>
             <label for="rice">
                 Rice<br>
-                <label for="plainRice"><input type="radio" name="rice" id="plainRice" required>Plain</label><br>
-                <label for="garlicRice"><input type="radio" name="rice" id="garlicRice" required>Garlic</label><br>
-                <label for="bagoongRice"><input type="radio" name="rice" id="bagoongRice" required>Bagoong</label><br>
+                <label for="plainRice"><input type="radio" name="rice" id="plainRice" checked>Plain</label><br>
+                <label for="garlicRice"><input type="radio" name="rice" id="garlicRice">Garlic</label><br>
+                <label for="bagoongRice"><input type="radio" name="rice" id="bagoongRice">Bagoong</label><br>
             </label>
             <label for="drinks">
                 Drinks<br>
-                <label for="cucumberLemonade"><input type="radio" name="drink" id="cucumberLemonade" required>Cucumber Lemonade</label><br>
-                <label for="redIcedTea"><input type="radio" name="drink" id="redIcedTea" required>Red Iced Tea</label><br>
-                <label for="ripeMangoJuice"><input type="radio" name="drink" id="ripeMangoJuice" required>Ripe Mango Juice</label><br>
+                <label for="cucumberLemonade"><input type="radio" name="drink" id="cucumberLemonade" checked>Cucumber Lemonade</label><br>
+                <label for="redIcedTea"><input type="radio" name="drink" id="redIcedTea">Red Iced Tea</label><br>
+                <label for="ripeMangoJuice"><input type="radio" name="drink" id="ripeMangoJuice">Ripe Mango Juice</label><br>
             </label>
         </fieldset>
         <fieldset>
             <legend>Venue Details</legend>
             <label for="venueAddress">Venue Address<br>
-                <textarea name="venueAddress" id="venueAddress" cols="50" rows="10" placeholder="Address Here" required></textarea>
+                <textarea name="venueAddress" id="venueAddress" cols="50" rows="10" placeholder="Address here..." required></textarea>
             </label><br>
             <label for="partyDate">Party Date: <input type="date" name="partyDate" id="partyDate" required></label><br>
             <label for="partyTime">Party Time: <input type="time" name="partyTime" id="partyTime" required></label><br>
