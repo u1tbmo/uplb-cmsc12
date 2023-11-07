@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euan's Party Package Order Form</title>
+</head>
+<body>
+    <h1>Euan's Party Package Order Form</h1>
+    <form action="">
+        <fieldset>
+            <legend>Customer Information</legend>
+            <label for="name">Name:
+                <input type="text" name="name" id="name" required>
+            </label><br>
+            <label for="mobileNumber">
+                Mobile Number: <input type="number" placeholder="09XXXXXXXXX" name="mobileNumber" id="mobileNumber" required>
+            </label><br>
+            <label for="emailAddress">
+                Email Address: <input type="email" name="emailAddress" id="emailAddress" required>
+            </label><br>
+        </fieldset>
+        <fieldset>
+            <legend>Party Details</legend>
+            <label for="qty">
+                Number of People: <input type="number" name="qty" id="qty" required>
+            </label><br>
+            <label for="appetizer">
+                Appetizer<br>
+                <label for="salad"><input type="radio" name="appetizer" id="salad" required>Salad</label><br>
+                <label for="breadWithDip"><input type="radio" name="appetizer" id="breadWithDip" required>Bread w/ Dip</label><br>
+                <label for="tomatoSurprise"><input type="radio" name="appetizer" id="tomatoSurprise" required>Tomato Surprise</label><br>
+                <label for="mushroomBites"><input type="radio" name="appetizer" id="mushroomBites" required>Mushroom Bites</label><br>
+            </label>
+            <label for="mainDishes">
+                Main Dishes<br>
+                <label for="roastBeef"><input type="checkbox" name="mainDishes" id="roastBeef">Roast Beef</label><br>
+                <label for="beefSteak"><input type="checkbox" name="mainDishes" id="beefSteak">Beef Steak</label><br>
+                <label for="porkSpareribs"><input type="checkbox" name="mainDishes" id="porkSpareribs">Pork Spareribs</label><br>
+                <label for="porkMarbella"><input type="checkbox" name="mainDishes" id="porkMarbella">Pork Marbella</label><br>
+                <label for="grilledChicken"><input type="checkbox" name="mainDishes" id="grilledChicken">Grilled Chicken</label><br>
+                <label for="roastChicken"><input type="checkbox" name="mainDishes" id="roastChicken">Roast Chicken</label><br>
+                <label for="broiledSalmon"><input type="checkbox" name="mainDishes" id="broiledSalmon">Broiled Salmon</label><br>
+                <label for="grilledSalmon"><input type="checkbox" name="mainDishes" id="grilledSalmon">Grilled Salmon</label><br>
+            </label>
+            <label for="Desserts">
+                Desserts<br>
+                <label for="moltenChocoCake"><input type="checkbox" name="desserts" id="moltenChocoCake">Molten Chocolate Cake</label><br>
+                <label for="redVelvetCake"><input type="checkbox" name="desserts" id="redVelvetCake">Red Velvet Cake</label><br>
+                <label for="lemonBars"><input type="checkbox" name="desserts" id="lemonBars">Lemon Bars</label><br>
+                <label for="peanutButterBars"><input type="checkbox" name="desserts" id="peanutButterBars">Peanut Butter Bars</label><br>
+                <label for="bukoPie"><input type="checkbox" name="desserts" id="bukoPie">Buko Pie</label><br>
+                <label for="lemonMeringuePie"><input type="checkbox" name="desserts" id="lemonMeringuePie">Lemon Meringue Pie</label><br>
+            </label>
+            <label for="rice">
+                Rice<br>
+                <label for="plainRice"><input type="radio" name="rice" id="plainRice" required>Plain</label><br>
+                <label for="garlicRice"><input type="radio" name="rice" id="garlicRice" required>Garlic</label><br>
+                <label for="bagoongRice"><input type="radio" name="rice" id="bagoongRice" required>Bagoong</label><br>
+            </label>
+            <label for="drinks">
+                Drinks<br>
+                <label for="cucumberLemonade"><input type="radio" name="drink" id="cucumberLemonade" required>Cucumber Lemonade</label><br>
+                <label for="redIcedTea"><input type="radio" name="drink" id="redIcedTea" required>Red Iced Tea</label><br>
+                <label for="ripeMangoJuice"><input type="radio" name="drink" id="ripeMangoJuice" required>Ripe Mango Juice</label><br>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Venue Details</legend>
+            <label for="venueAddress">Venue Address<br>
+                <textarea name="venueAddress" id="venueAddress" cols="50" rows="10" placeholder="Address Here" required></textarea>
+            </label><br>
+            <label for="partyDate">Party Date: <input type="date" name="partyDate" id="partyDate" required></label><br>
+            <label for="partyTime">Party Time: <input type="time" name="partyTime" id="partyTime" required></label><br>
+        </fieldset>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>
