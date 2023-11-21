@@ -77,8 +77,7 @@ function findFarthest(origin, locations) {
   let farthestDistance = distanceArray[0];
   for (let i = 1; i < Object.keys(locations).length; i++) {
     if (distanceArray[i] > farthestDistance) {
-      farthestPerson = personArray[i];
-      farthestDistance = distanceArray[i];
+      [farthestPerson, farthestDistance] = [personArray[i], distanceArray[i]];
     }
   }
   console.log(
@@ -103,8 +102,7 @@ function findNearest(origin, locations) {
   let nearestDistance = distanceArray[0];
   for (let i = 1; i < Object.keys(locations).length; i++) {
     if (distanceArray[i] < nearestDistance) {
-      nearestPerson = personArray[i];
-      nearestDistance = distanceArray[i];
+      [nearestPerson, nearestDistance] = [personArray[i], distanceArray[i]];
     }
   }
   console.log(
