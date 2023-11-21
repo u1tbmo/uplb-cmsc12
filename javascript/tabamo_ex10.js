@@ -19,12 +19,16 @@ function findDistance(origin, point) {
 }
 function processMap(origin, locations) {
   let entryArray = Object.entries(locations);
+  let personArray = [];
   let distanceArray = [];
   for ([person, coordinates] of entryArray) {
     distanceFromHome = findDistance(origin, coordinates);
     console.log(`${person}'s distance from HOME: ${distanceFromHome}`);
+    personArray.push(person);
     distanceArray.push(distanceFromHome);
   }
+  // console.log(personArray);
+  // console.log(distanceArray);
   return distanceArray;
 }
 function findFarthest(origin, locations) {
