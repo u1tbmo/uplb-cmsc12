@@ -1,6 +1,7 @@
 /* Tabamo, Euan Jed S. | B-1L
 Exercise 10 | November 21, 2023 */
 
+// Global Variables
 const HOME = [3, 4];
 let locationObject = {
   Chelsea: [-3, 3],
@@ -27,8 +28,8 @@ function findDistance(origin, point) {
 /**
  * This function produces the person array and the distance array from an origin and a locations object.
  *
- * @param {Number[]} origin
- * @param {Object} locations
+ * @param {Number[]} origin - The coordinates of the origin point.
+ * @param {Object} locations - The object containing persons and their coordinates.
  * @return {Array[]} The array containing the person array and the distance array.
  */
 function getPersonAndDistanceArrays(origin, locations) {
