@@ -8,118 +8,113 @@ let locationObject = {
   Andrew: [6, 7],
   Dustin: [15, 12],
 };
-let distanceArray = [];
+
 /**
- * Finds the distance using the distance formula.
- * @param {Number[]} origin - The coordinates of the origin point.
- * @param {Number[]} point - The coordinates of a point.
+ * This function finds the distance between the origin and the point.
+ *
+ * @param {number[]} origin - The coordinates of the origin point.
+ * @param {number[]} point - The coordinates of the point.
  * @return {Number} The distance between the origin and the point.
  */
 function findDistance(origin, point) {
-  let x2 = origin[0];
-  let y2 = origin[1];
-  let x1 = point[0];
-  let y1 = point[1];
+  const x2 = origin[0];
+  const y2 = origin[1];
+  const x1 = point[0];
+  const y1 = point[1];
   return Number(Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(3));
 }
 
-/**
- * Collects and manages the specified origin array and all othercoordinates.
- * @param {Number[]} origin - The coordinates of the origin point.
- * @param {Object.<String,Number[]>} locations - The object containing persons and their coordinates
- * @return {Number[]} The array of distances.
- */
-function processMap(origin, locations) {
-  let entryArray = Object.entries(locations);
+function getPersonAndDistanceArrays(origin, locations) {
   let personArray = [];
   let distanceArray = [];
-  for ([person, coordinates] of entryArray) {
-    distanceFromHome = findDistance(origin, coordinates);
-    console.log(`${person}'s distance from HOME: ${distanceFromHome}`);
+  for (const [person, coords] of Object.entries(locations)) {
     personArray.push(person);
-    distanceArray.push(distanceFromHome);
+    distanceArray.push(findDistance(origin, coords));
   }
-  // console.log(personArray);
-  // console.log(distanceArray);
+  return [personArray, distanceArray];
+}
+
+/**
+ * This function collects and manages the specified origin array and all other coordinates.
+ * It also outputs all the locations away from home.
+ *
+ * @param {Number[]} origin - The coordinates of the origin point.
+ * @param {Object} locations - The object containing persons and their coordinates.
+ * @return {Number[]} The array containing the distances of all locations away from home.
+ */
+function processMap(origin, locations) {
+  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+    origin,
+    locations
+  );
+  for (let i = 0; i < personArray.length; i++) {
+    console.log(`${personArray[i]}'s distance from HOME: ${distanceArray[i]}`);
+  }
   return distanceArray;
 }
+
 /**
- * Finds the farthest distance.
+ * This function finds the farthest distance from the origin.
+ * It also outputs the farthest person and their distance.
+ * It also returns the array containing the farthest person's name and their distance.
+ *
  * @param {Number[]} origin - The coordinates of the origin point.
- * @param {Object.<String,Number[]>} locations - The object containing persons and their coordinates
+ * @param {Object} locations - The object containing persons and their coordinates.
  * @return {Array} The array containing the farthest person's name and their distance.
  */
 function findFarthest(origin, locations) {
-  let entryArray = Object.entries(locations);
-  let personArray = [];
-  let distanceArray = [];
-  for ([person, coordinates] of entryArray) {
-    distanceFromHome = findDistance(origin, coordinates);
-    personArray.push(person);
-    distanceArray.push(distanceFromHome);
-  }
-
-  let farthestDistance = 0;
-  let i = 0;
-  while (i < distanceArray.length) {
+  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+    origin,
+    locations
+  );
+  let farthestPerson = personArray[0];
+  let farthestDistance = distanceArray[0];
+  for (let i = 1; i < Object.keys(locations).length; i++) {
     if (distanceArray[i] > farthestDistance) {
       farthestPerson = personArray[i];
       farthestDistance = distanceArray[i];
     }
-    i++;
   }
-
   console.log(
-    `The longest distance from HOME is in ${farthestPerson} at ${farthestDistance}.`
+    `The longest distance from home is in ${farthestPerson}'s at ${farthestDistance} units.`
   );
-  return [farthestPerson, farthestDistance];
 }
 
 /**
- * Finds the nearest distance.
+ * This function finds the nearest distance from the origin.
+ * It also outputs the nearest person and their distance.
+ * It also returns the array containing the nearest person's name and their distance.
+ *
  * @param {Number[]} origin - The coordinates of the origin point.
- * @param {Object.<String,Number[]>} locations - The object containing persons and their coordinates
+ * @param {Object} locations - The object containing persons and their coordinates.
  * @return {Array} The array containing the nearest person's name and their distance.
  */
 function findNearest(origin, locations) {
-  entryArray = Object.entries(locations);
-  let personArray = [];
-  let distanceArray = [];
-  for ([person, coordinates] of entryArray) {
-    distanceFromHome = findDistance(origin, coordinates);
-    personArray.push(person);
-    distanceArray.push(distanceFromHome);
-  }
-
-  let nearestDistance = null;
-  let i = 0;
-  while (i < distanceArray.length) {
-    if (i === 0) {
-      nearestDistance = distanceArray[i];
-    } else if (distanceArray[i] < nearestDistance) {
+  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+    origin,
+    locations
+  );
+  let nearestPerson = personArray[0];
+  let nearestDistance = distanceArray[0];
+  for (let i = 1; i < Object.keys(locations).length; i++) {
+    if (distanceArray[i] < nearestDistance) {
       nearestPerson = personArray[i];
       nearestDistance = distanceArray[i];
     }
-    i++;
   }
-
   console.log(
-    `The nearest distance from HOME is in ${nearestPerson} at ${nearestDistance}.`
+    `The shortest distance from home is in ${nearestPerson}'s at ${nearestDistance} units.`
   );
-
-  return [nearestPerson, nearestDistance];
 }
+
 /**
  * The main function.
  */
 function main() {
   findFarthest(HOME, locationObject);
   findNearest(HOME, locationObject);
-
-  console.log(`\n--- All locations away from HOME ---\n`);
-
-  distanceArray = processMap(HOME, locationObject);
+  console.log(`\nAll locations away from HOME\n`);
+  processMap(HOME, locationObject);
 }
 
-// Calls the main function.
 main();
