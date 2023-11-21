@@ -1,13 +1,5 @@
 /* Tabamo, Euan Jed S. | B-1L
 Exercise 10 | November 21, 2023 */
-/**
- * {DataTypeHere} - Note: used for usual data type declaration.
- * {(OneDataType|AnotherDataType)} - Note: used for cases where data type could be either of the two.
- * {DataType[]} - Note: used for an array of DataType instances.
- * {?DataTypeHere} - Note: used for data types which could be the data type mentioned or null.
- * {DataTypeHere} [parameterNameHere] - Note: used for optional parameters.
- * {Object.<KeyDataType, ValueDataType>} - Note: used for an object with KeyDataType keys and ValueDataType values
- */
 
 const HOME = [3, 4];
 let locationObject = {
