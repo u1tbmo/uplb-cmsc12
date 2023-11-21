@@ -50,7 +50,7 @@ function getPersonAndDistanceArrays(origin, locations) {
  * @return {Number[]} The array containing the distances of all locations away from home.
  */
 function processMap(origin, locations) {
-  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+  const [personArray, distanceArray] = getPersonAndDistanceArrays(
     origin,
     locations
   );
@@ -69,7 +69,7 @@ function processMap(origin, locations) {
  * @param {Object} locations - The object containing persons and their coordinates.
  */
 function findFarthest(origin, locations) {
-  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+  const [personArray, distanceArray] = getPersonAndDistanceArrays(
     origin,
     locations
   );
@@ -94,7 +94,7 @@ function findFarthest(origin, locations) {
  * @param {Object} locations - The object containing persons and their coordinates.
  */
 function findNearest(origin, locations) {
-  let [personArray, distanceArray] = getPersonAndDistanceArrays(
+  const [personArray, distanceArray] = getPersonAndDistanceArrays(
     origin,
     locations
   );
