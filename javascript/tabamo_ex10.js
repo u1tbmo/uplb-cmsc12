@@ -18,7 +18,7 @@ function findDistance(origin, point) {
   return Number(Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(3));
 }
 function processMap(origin, locations) {
-  entryArray = Object.entries(locations);
+  let entryArray = Object.entries(locations);
   let distanceArray = [];
   for ([person, coordinates] of entryArray) {
     distanceFromHome = findDistance(origin, coordinates);
@@ -28,7 +28,7 @@ function processMap(origin, locations) {
   return distanceArray;
 }
 function findFarthest(origin, locations) {
-  entryArray = Object.entries(locations);
+  let entryArray = Object.entries(locations);
   let personArray = [];
   let distanceArray = [];
   for ([person, coordinates] of entryArray) {
@@ -84,9 +84,9 @@ function findNearest(origin, locations) {
 function main() {
   findFarthest(HOME, locationObject);
   findNearest(HOME, locationObject);
-  console.log(`\n`);
-  console.log(`--- All locations away from HOME ---`);
-  console.log(`\n`);
+
+  console.log(`\n--- All locations away from HOME ---\n`);
+
   distanceArray = processMap(HOME, locationObject);
 }
 
