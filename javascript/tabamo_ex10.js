@@ -24,6 +24,13 @@ function findDistance(origin, point) {
   return Number(Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(3));
 }
 
+/**
+ * This function produces the person array and the distance array from an origin and a locations object.
+ *
+ * @param {Number[]} origin
+ * @param {Object} locations
+ * @return {Array[]} The array containing the person array and the distance array.
+ */
 function getPersonAndDistanceArrays(origin, locations) {
   let personArray = [];
   let distanceArray = [];
@@ -60,7 +67,6 @@ function processMap(origin, locations) {
  *
  * @param {Number[]} origin - The coordinates of the origin point.
  * @param {Object} locations - The object containing persons and their coordinates.
- * @return {Array} The array containing the farthest person's name and their distance.
  */
 function findFarthest(origin, locations) {
   let [personArray, distanceArray] = getPersonAndDistanceArrays(
@@ -87,7 +93,6 @@ function findFarthest(origin, locations) {
  *
  * @param {Number[]} origin - The coordinates of the origin point.
  * @param {Object} locations - The object containing persons and their coordinates.
- * @return {Array} The array containing the nearest person's name and their distance.
  */
 function findNearest(origin, locations) {
   let [personArray, distanceArray] = getPersonAndDistanceArrays(
