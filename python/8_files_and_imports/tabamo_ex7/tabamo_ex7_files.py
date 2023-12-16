@@ -14,6 +14,7 @@ hist_path = os.path.join(file_dir, "history.dat")
 
 # NOTE: encoding="utf-8" in accordance with PEP 597 https://peps.python.org/pep-0597/
 
+
 def loadPortfolio(s_dict: dict[str, list]) -> dict:
     """Loads the portfolio from a file.
 
@@ -39,9 +40,11 @@ def loadPortfolio(s_dict: dict[str, list]) -> dict:
         # Stocks
         else:
             s_dict[data[0]] = [data[1], float(data[2]), float(data[3].rstrip("\n"))]
+    f_h.close()
 
     print("\nINFO: Successfully loaded portfolio!")
     return s_dict
+
 
 def savePortfolio(s_dict: dict[str, list]) -> None:
     """Saves the portfolio to a file.
@@ -67,18 +70,21 @@ def savePortfolio(s_dict: dict[str, list]) -> None:
 
 # Additional functions to also load and save history
 
+
 def loadHistory(history: list) -> list:
     # Checks if the file exists
     if os.path.isfile(hist_path) is False:
         return history
-    
+
     history.clear()
     f_h = open(hist_path, "r", encoding="utf-8")
     for line in f_h:
         data = line.split(",")
         history.append([data[0], data[1], float(data[2]), float(data[3].rstrip("\n"))])
+    f_h.close()
 
     return history
+
 
 def saveHistory(history: list) -> None:
     f_h = open(hist_path, "w", encoding="utf-8")
