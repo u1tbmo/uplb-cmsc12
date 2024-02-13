@@ -1,3 +1,3 @@
 # uplb-cmsc12
 
-Project files for UPLB CMSC 12.
+Code files for CMSC 12: Foundations of Computer Science
